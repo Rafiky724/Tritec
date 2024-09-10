@@ -1,40 +1,30 @@
-<div class="p-6 card-color rounded-lg">
-  <h1 class="text-1xl text-white">Selecciona un ejercicio a resolver</h1>
-  <div class="total-container flex items-center ">
-    <div class="mt-2">
-      <div class="excercises-color mb-2 p-2 pr-4 flex items-center">
-        <div class="flex justify-center items-center">
-          <img
-            class="bg-image"
-            src="{{ image_url }}"
-            alt="{{title}}"
-          />
+<div class="total-container flex items-center">
+  <div class="mt-2">
+    <div class="excercises-color mb-2 p-2 pr-4 flex items-center">
+      <div class="flex justify-center items-center">
+        <img class="bg-image" src="{{ card.image_url }}" alt="{{card.title}}" />
+      </div>
+      <div class="container-content w-80">
+        <div class="title-exercise font-bold text-1xl">
+          <h3>{{card.title}}</h3>
         </div>
-        <div class="container-content w-80">
-          <div class="title-exercise font-bold text-1xl">
-            <h3>{{title}}</h3>
-          </div>
-          <div class="content-excercise">
-            <p>
-              {{description}}
-            </p>
-          </div>
-        </div>
-        <div class="stars flex column">
-        {% for _ in range(stars) %}
-            {% include 'partials/star.html' %}
-        {% endfor %}
-        {% for _ in range(5 - stars) %}
-            {% include 'partials/starNull.html' %}
-        {% endfor %}
+        <div class="content-excercise">
+          <p>{{card.description}}</p>
         </div>
       </div>
-    </div>
+      <div class="stars flex column">
+        {% for _ in range(card.stars) %} 
+            {% include 'partials/star.html' %} {%
+        endfor %} 
 
-    <div class="button-init">
-        <a class="init-btn">
-            {% include 'partials/botonInit.html' %}
-        </a>
+        {% for _ in range(5 - card.stars) %} 
+            {% include 'partials/starNull.html' %} 
+        {% endfor %}
+      </div>
     </div>
+  </div>
+
+  <div class="button-init">
+    <a href="{{ url_for('problem_bp.problems') }}" class="init-btn"> {% include 'partials/botonInit.html' %} </a>
   </div>
 </div>

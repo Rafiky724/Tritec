@@ -39,8 +39,7 @@ nav ul li a {
 }
 
 .logo {
-  width: 87px;
-  height: 51px;
+  width: 120px;
 }
 
 .card-color {
@@ -55,11 +54,6 @@ nav ul li a {
   background-color: #38a5c6;
   border-radius: 15px;
   gap: 20px;
-}
-
-.bg-image {
-  background-color: #dafdba;
-  border-radius: 15px;
 }
 
 .title-exercise,

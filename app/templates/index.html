@@ -5,7 +5,13 @@
 {% block content %}
     <h1 class="text-3xl font-bold mb-6 ml-12 text-white">Ejercicios</h1>
 
-    {% block card %}
-        {% include 'partials/card.html' %}
-    {% endblock %}
+    <div class="p-6 card-color rounded-lg">
+        <h1 class="text-1xl text-white">Selecciona un ejercicio a resolver</h1>
+        {% block card %}
+            {% for card in cards %}
+                {% include 'partials/card.html' %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+   
 {% endblock %}
