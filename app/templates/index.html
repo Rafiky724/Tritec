@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold mb-6 ml-12 text-white">Ejercicios</h1>
+
+    {% block card %}
+        {% include 'partials/card.html' %}
+    {% endblock %}
+{% endblock %}

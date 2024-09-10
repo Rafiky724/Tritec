@@ -1,0 +1,39 @@
+<div class="p-6 card-color rounded-lg">
+  <h1 class="text-1xl text-white">Selecciona un ejercicio a resolver</h1>
+  <div class="total-container flex items-center ">
+    <div class="mt-2">
+      <div class="excercises-color mb-2 p-2 flex items-center">
+        <div class="flex justify-center items-center">
+          <img
+            class="bg-image"
+            src="{{ url_for('static', filename='img/fizzbuzz-logo.png') }}"
+            alt="logoExercise"
+          />
+        </div>
+        <div class="container-content w-80">
+          <div class="title-exercise font-bold text-1xl">
+            <h3>FizzBuzz</h3>
+          </div>
+          <div class="content-excercise">
+            <p>
+              El problema de FizzBuzz consiste en reemplazar los números de una lista con "Fizz" si son múltiplos de 3, "Buzz" si son múltiplos de 5, y "FizzBuzz" si son múltiplos de ambos.
+            </p>
+          </div>
+        </div>
+        <div class="stars flex column">
+            {% include 'partials/star.html' %}
+            {% include 'partials/star.html' %}
+            {% include 'partials/star.html' %}
+            {% include 'partials/star.html' %}
+            {% include 'partials/star.html' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="button-init">
+        <a class="init-btn">
+            {% include 'partials/botonInit.html' %}
+        </a>
+    </div>
+  </div>
+</div>
