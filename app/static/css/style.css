@@ -47,8 +47,8 @@ nav ul li a {
   background-color: #13678a;
 }
 
-.long-card{
-    max-width: 900px !important;
+.long-card {
+  max-width: 900px !important;
 }
 
 .excercises-color {
@@ -67,10 +67,14 @@ nav ul li a {
   color: white;
 }
 
+.content-excercise {
+  font-size: small;
+}
+
 .total-container {
-    gap: 15px;
+  gap: 15px;
 }
 
 .init-btn {
-    cursor: pointer;
+  cursor: pointer;
 }
