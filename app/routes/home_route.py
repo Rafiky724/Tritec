@@ -5,6 +5,7 @@ home_bp = Blueprint('home_bp', __name__)
 @home_bp.route('/')
 def home():
     cards = [
+        {},
         {
             'title': 'FizzBuzz',
             'description': 'El problema de FizzBuzz consiste en reemplazar los números de una lista con "Fizz" si son múltiplos de 3, "Buzz" si son múltiplos de 5, y "FizzBuzz" si son múltiplos de ambos.',
@@ -25,4 +26,4 @@ def home():
         },
     ]
 
-    return render_template('index.html', cards=cards)
+    return render_template('index.html', cards=enumerate(cards))

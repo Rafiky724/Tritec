@@ -15,14 +15,24 @@
       href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.8/theme/night.min.css">
+
   </head>
   <body>
     {% block navbar %} 
       {% include 'partials/navbar.html' %} 
     {% endblock %}
 
-    <div class="container mx-auto mt-4 long-card">
+    <div class="m-1">
       {% block content %} {% endblock %}
     </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
   </body>
 </html>

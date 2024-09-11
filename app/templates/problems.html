@@ -1,8 +1,98 @@
-{% extends 'base.html' %}
+{% extends 'baseProblem.html' %} 
 
-{% block title %}Problemas{% endblock %}
+{% block title %}Problemas{% endblock %} 
 
-{% block content %}
-    <h1 class="text-4xl font-bold mb-4">Lista de Problemas</h1>
-    <p class="text-lg">Explora una variedad de problemas para mejorar tus habilidades de programación.</p>
+{%block content %}
+<div class="grid grid-cols-[1.5fr_3fr_1.5fr] gap-1 grid-components">
+    <!-- 1 -->
+    <div class="col-1 p-1 rounded-r-lg">
+        <div class="flex items-center gap-3 justify-between">
+            <div class="flex items-center gap-3">
+                <div class="imageProblem">
+                    <img src="{{ problem.image_url }}" alt="algoritm">
+                </div>
+                <div class="title-block font-bold">
+                    {{problem.title}}
+                </div>
+            </div>
+            <div>
+                <img class="menu mr-2" src="{{ url_for('static', filename='img/menu.png') }}" alt="menu">
+            </div>
+        </div>
+    </div>
+    <!-- 2 -->
+    <div class="flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold">
+        {{problem.title}}.py
+        <div class="language p-2 flex justify-between">
+            <h4>Python</h4>
+            <img class="arrow-button ml-2" src="{{ url_for('static', filename='img/arrowButton.png') }}" alt="arrowBotton">
+        </div>
+    </div>
+    <!-- 3 -->
+    <div class="col-1 right p-1 rounded-l-lg flex items-center">
+        <div class="flex items-center gap-3 justify-between">
+            <img class="menu ml-2" src="{{ url_for('static', filename='img/menu.png') }}" alt="menu">
+            <div class="test-block font-bold">
+                <h4>Pruebas</h4>
+            </div>
+        </div>
+    </div>
+    <!-- 4 -->
+    <div class="col-2-side row-span-2 rounded-r-lg">
+        <div class="content-problem p-4">
+            {{problem.problem|safe}}
+        </div>
+    </div>
+    <!-- 5 -->
+    <div class="col-2-mid">
+        <textarea  id="code" name="code">
+/* Problema */
+def prueba(num):
+    for i in range(len(num)):
+        print(f”this is a prueba {num[i]}”)
+            
+array = [4, 5 6, 7, 8]
+prueba(array)
+            
+            
+__init__():
+    print(”Esto es solo una prueba de que aquí va el código”)
+    nada = input(”Ni siquiera sé si esto corre”)
+            
+    if(tengoGanasVivir == true):
+        continue
+    else:
+        break.killmyself
+        </textarea>
+    </div>
+    <!-- 6 -->
+    <div class="col-2-side col-2-side-right row-span-2">
+        <div class="p-2">
+            {% include 'partials/prueba.html' %} 
+        </div>
+    </div>
+    <!-- 7 -->
+    <div class="col-2 col-start-2 col-end-3 p-2">
+        <div class="flex justify-between items-center">
+            <div class="flex-col">
+                <h5 class="ml-6 mt-2">Dificultad</h5>
+                <div class="flex ml-4 starss mb-3">
+                    {% for _ in range(problem.stars) %} 
+                        {% include 'partials/star.html' %} 
+                    {%endfor %} 
+
+                    {% for _ in range(5 - problem.stars) %} 
+                        {% include 'partials/starNull.html' %} 
+                    {% endfor %} 
+                </div>
+            </div>
+            <div class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
+                <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}" alt="arrowBlack">
+                <h4 class="mr-1">Run Code</h4>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
 {% endblock %}

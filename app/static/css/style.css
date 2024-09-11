@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -71,4 +75,125 @@ nav ul li a {
 
 .init-btn {
   cursor: pointer;
+}
+
+.grid-components {
+  color: white;
+}
+
+.col-1 {
+  width: 100%;
+  height: 60px;
+  background-color: #012e40;
+}
+
+.title-block{
+  font-size: small;
+}
+
+.right{
+  background-color: #004459;
+}
+
+.menu {
+  width: 30px;
+  cursor: pointer;
+}
+
+.mid {
+  background-color: #004459;
+}
+
+.col-2-mid {
+  width: 100%;
+  min-height: 560px;
+}
+
+.CodeMirror {
+  background-color: #020d14 !important;
+  min-height: 560px !important;
+  color: white !important;
+}
+
+.CodeMirror-gutter {
+  background-color: #020d14 !important;
+  color: white !important;
+}
+
+.col-2 {
+  width: 100%;
+  max-height: 100px;
+  background-color: #004459;
+}
+
+.col-2-side {
+  width: 100%;
+  min-height: 560px;
+  background-color: #357184;
+}
+
+.col-2-side-right {
+  background-color: #012e40;
+}
+
+.content-problem {
+  font-family: "PT Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: small;
+  text-align: justify;
+}
+
+.imageProblem {
+  width: 55px;
+}
+
+.runCode{
+  background-color: #07d88d;
+  color: #012e40;
+  cursor: pointer;
+  font-size: small;
+}
+
+.test-block{
+  background-color: #012e40;
+  height: 60px;
+  width: 150px;
+  padding: 11%;
+  font-size: small;
+}
+
+.starss{
+  width: 30px !important;
+}
+
+.img_blackArrow {
+  width: 30px;
+}
+
+.tests{
+  font-family: "PT Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: small;
+  background-color: #004459;
+}
+
+.language{
+  width: 120px;
+  height: 40px;
+  background-color: #012e40;
+}
+
+.arrow-button{
+  cursor: pointer;
+}
+
+@media screen and (min-height: 800px) {
+  .col-2-mid{
+    min-height: 700px !important;
+  }
+  .CodeMirror{
+    min-height: 700px !important;
+  }
 }
