@@ -1,0 +1,38 @@
+import importlib
+import sys
+
+class BinarySearchTests():
+
+    def __init__(self) -> None:
+        # Tests: (lista, objetivo, resultado esperado)
+        self._tests = [
+            ([1, 2, 3, 4, 5], 3, 2),  # Elemento encontrado en la posición 2
+            ([10, 20, 30, 40, 50], 10, 0),  # Primer elemento
+            ([10, 20, 30, 40, 50], 50, 4),  # Último elemento
+            ([5, 7, 11, 17, 19], 13, -1),  # No encontrado
+            ([], 1, -1)  # Lista vacía
+        ]
+
+    def tests(self, name):
+        self.reload_module(name)
+
+        resultados = []
+
+        for lista, objetivo, esperado in self._tests:
+
+            try:
+                from app.problem_solver.binarysearch import binary_search
+                resultado = binary_search(lista, objetivo)
+                print(f"Resultado: {resultado}, esperado: {esperado}")
+            except Exception as e:
+                return []
+            resultados.append(resultado == esperado)
+
+        return resultados
+
+    def reload_module(self, name2):
+        module_name = f"app.problem_solver.binarysearch"
+        if module_name in sys.modules:
+            importlib.reload(sys.modules[module_name])
+        else:
+            importlib.import_module(module_name)

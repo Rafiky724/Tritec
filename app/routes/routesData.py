@@ -1,6 +1,26 @@
-from flask import Blueprint, render_template, request, url_for
+from flask import Blueprint, jsonify, render_template, request, url_for
+
+from migrate.db import getResult
 
 bp = Blueprint('bp', __name__)
+
+@bp.route('/enviar', methods=['POST'])
+def send_code():
+
+    data = request.get_json()
+
+    code_user = data.get('code')
+    language = data.get('language')
+    problem = data.get('problem')
+    
+    resultado = getResult(code_user, language, problem)
+    print(resultado)
+
+    #return resultado
+
+    #C#
+    return jsonify({"message": resultado}), 201
+    #return jsonify({"code": code_user, "languaje": language, "problem": problem}), 201
 
 @bp.route('/')
 def home():
@@ -13,8 +33,8 @@ def home():
             'stars': 5
         },
         {
-            'title': 'BubleSort',
-            'description': 'El algoritmo de Bubble Sort ordena una lista comparando y, si es necesario, intercambiando pares de elementos adyacentes. Repite el proceso hasta que toda la lista esté ordenada.',
+            'title': 'Palindrome',
+            'description': 'El algoritmo para verificar si una palabra es un palíndromo normaliza la entrada eliminando espacios y convirtiendo todas las letras a minúsculas. Luego, compara la palabra resultante con su versión invertida. Si ambas versiones son iguales, la palabra es un palíndromo; de lo contrario, no lo es.',
             'image_url': url_for('static', filename='img/buble-logo.png'),
             'stars': 3
         },
@@ -31,41 +51,55 @@ def home():
 @bp.route('/problems')
 def problems():
     value = request.args.get('value', default=None, type=int)
-
+    language = request.args.get('language', default='python')
     problems = [
         {},
-        {
+        { 
             'title': 'FizzBuzz',
-            'problem': 'Para realizar el algoritmo de FizzBuzz, primero debes tener una lista de números como entrada. Luego, recorres cada número de la lista uno a uno. Para cada número, revisas si es divisible por 3. Si es divisible por 3, reemplazas ese número con "Fizz". Si no es divisible por 3, pero es divisible por 5, reemplazas el número con "Buzz". Si el número es divisible tanto por 3 como por 5, entonces lo reemplazas con "FizzBuzz". Si el número no cumple con ninguna de estas condiciones, simplemente mantienes el número original en la lista. Al final del proceso, obtendrás una lista transformada donde cada número ha sido reemplazado de acuerdo con estas reglas.\n\nEsto es solo un texto guía. Ya luego tenemos que ser más claro en lo que tenemos que decir, lo que se tiene que tener en cuenta a la hora de realizar el código.',
+            'problem': 'El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n Divisibilidad por 3: Si el numero es divisible por 3, devolveras "Fizz" \n Divisibilidad por ambos: Si el numero es divisible por 5, devolveras "Buzz" \n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz \n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n Entrada: n: int : Un número entero. \n Salidas: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el numero en forma de cadena ',
             'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
             'stars': 5,
             'test': {
                 'one': {'description': 'Prueba #1', 'result': True},
                 'two': {'description': 'Prueba #2', 'result': False},
                 'three': {'description': 'Prueba #3', 'result': True},
+            },
+            'languages': {
+                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
+                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
             }
-        },
+        },            
         {
-            'title': 'BubbleSort',
-            'problem': 'adios',
+            'title': 'Palindrome',
+            'problem': 'Verificar si una palabra es palíndromo, un palíndromo es una palabra que se lee igual al derecho y al revez, ignorando espacios \n Entrada: word: str \n Salidas: bool : True Si la palabra es palindromo, False en caso contrario',
             'image_url': url_for('static', filename='img/buble-logo.png'),
             'stars': 3,
             'test': {
                 'one': {'description': 'Prueba #1', 'result': True},
                 'two': {'description': 'Prueba #2', 'result': False},
                 'three': {'description': 'Prueba #3', 'result': True},
+            },
+            'languages': {
+                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
+                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
             }
         },
         {
             'title': 'BinarySearch',
-            'problem': 'adios',
+            'problem': 'Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo \n Entrada: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar \n Salida: int: El indice del target en el arreglo si se encuentra, Si no es en el arreglo se devuelve -1) ',
             'image_url': url_for('static', filename='img/binary-logo.png'),
             'stars': 4,
             'test': {
-                'one': {'description': 'Prueba #1', 'result': True},
+                'one': {'description': 'Prueba #1', 'result': False},
                 'two': {'description': 'Prueba #2', 'result': False},
-                'three': {'description': 'Prueba #3', 'result': True},
+                'three': {'description': 'Prueba #3', 'result': False},
+                'Four': {'description': 'Prueba #4', 'result': False},
+                'Five': {'description': 'Prueba #5', 'result': False},
             },
+            'languages': {
+                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
+                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
+            }
         },
     ]
 
@@ -75,4 +109,8 @@ def problems():
 
     problem = problems[value] if value is not None and 0 <= value < len(problems) else None
 
+    if problem:
+        problem['selected_code'] = problem['languages'].get(language, {}).get('code', '')
+
     return render_template('problems.html', problem=problem)
+

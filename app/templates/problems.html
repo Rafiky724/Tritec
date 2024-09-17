@@ -11,7 +11,7 @@
                 <div class="imageProblem">
                     <img src="{{ problem.image_url }}" alt="algoritm">
                 </div>
-                <div class="title-block font-bold">
+                <div id="problemTitle" class="title-block font-bold">
                     {{problem.title}}
                 </div>
             </div>
@@ -21,11 +21,22 @@
         </div>
     </div>
     <!-- 2 -->
-    <div class="flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold">
+    <div class="relative flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold" id="dropdownButton" style="z-index: 100;">
         {{problem.title}}.py
-        <div class="language p-2 flex justify-between">
-            <h4>Python</h4>
+        <div 
+        onclick="toggleDropdown()"
+        class="relative language p-2 flex justify-between">
+            <h4 id="language">{{ request.args.get('language', 'python')|capitalize }}</h4>
             <img class="arrow-button ml-2" src="{{ url_for('static', filename='img/arrowButton.png') }}" alt="arrowBotton">
+
+            <div id="dropdown" class="rounded absolute top-[50px] w-[400px] shadow-md left-[0%] hidden" style="width: 100%; background-color: #012e40;">
+                <div class="cursor-pointer hover:bg-gray-300 p-5" onclick="selectLanguaje('python')">
+                    Python
+                </div>
+                <div class="cursor-pointer hover:bg-gray-300 p-5" onclick="selectLanguaje('c#')">
+                    C#
+                </div>
+            </div>
         </div>
     </div>
     <!-- 3 -->
@@ -44,30 +55,14 @@
         </div>
     </div>
     <!-- 5 -->
-    <div class="col-2-mid">
+    <div class="col-2-mid" style="z-index: 10;">
         <textarea  id="code" name="code">
-/* Problema */
-def prueba(num):
-    for i in range(len(num)):
-        print(f”this is a prueba {num[i]}”)
-            
-array = [4, 5 6, 7, 8]
-prueba(array)
-            
-            
-__init__():
-    print(”Esto es solo una prueba de que aquí va el código”)
-    nada = input(”Ni siquiera sé si esto corre”)
-            
-    if(tengoGanasVivir == true):
-        continue
-    else:
-        break.killmyself
+{{ problem.selected_code }}
         </textarea>
     </div>
     <!-- 6 -->
     <div class="col-2-side col-2-side-right row-span-2">
-        <div class="p-2">
+        <div id="containerTest" class="p-2">
             {% include 'partials/prueba.html' %} 
         </div>
     </div>
@@ -86,9 +81,9 @@ __init__():
                     {% endfor %} 
                 </div>
             </div>
-            <div class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
+            <div id="runCode" class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
                 <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}" alt="arrowBlack">
-                <h4 class="mr-1">Run Code</h4>
+                <button class="mr-1">Run Code</button>
             </div>
         </div>
         

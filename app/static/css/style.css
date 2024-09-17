@@ -115,6 +115,10 @@ nav ul li a {
   color: white !important;
 }
 
+.CodeMirror-cursor {
+  border: 2px solid white !important;
+}
+
 .CodeMirror-gutter {
   background-color: #020d14 !important;
   color: white !important;
