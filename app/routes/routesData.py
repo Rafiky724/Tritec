@@ -14,13 +14,13 @@ def send_code():
     problem = data.get('problem')
     
     resultado = getResult(code_user, language, problem)
-    print(resultado)
+    
+    if(language == "csharp"):
+        resultado = resultado.text
 
-    #return resultado
 
-    #C#
     return jsonify({"message": resultado}), 201
-    #return jsonify({"code": code_user, "languaje": language, "problem": problem}), 201
+    
 
 @bp.route('/')
 def home():
@@ -56,49 +56,34 @@ def problems():
         {},
         { 
             'title': 'FizzBuzz',
-            'problem': 'El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n Divisibilidad por 3: Si el numero es divisible por 3, devolveras "Fizz" \n Divisibilidad por ambos: Si el numero es divisible por 5, devolveras "Buzz" \n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz \n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n Entrada: n: int : Un número entero. \n Salidas: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el numero en forma de cadena ',
+            'problem': 'El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n Entrada: n: int : Un número entero (para python) o un numero long (para c#). \n\n Salidas: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena.',
             'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
             'stars': 5,
-            'test': {
-                'one': {'description': 'Prueba #1', 'result': True},
-                'two': {'description': 'Prueba #2', 'result': False},
-                'three': {'description': 'Prueba #3', 'result': True},
-            },
-            'languages': {
-                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
-                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
+            "languages": {
+                'python': {'code': 'def fizzbuzz(n):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                "c#": {
+                    "code": "using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class FizzBuzz : IProblemSolver\n    {\n        public string _fizzBuzz(long number)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}"
+                }
             }
         },            
         {
             'title': 'Palindrome',
-            'problem': 'Verificar si una palabra es palíndromo, un palíndromo es una palabra que se lee igual al derecho y al revez, ignorando espacios \n Entrada: word: str \n Salidas: bool : True Si la palabra es palindromo, False en caso contrario',
+            'problem': 'El objetivo es verificar si una palabra es palíndromo. Un palíndromo es una palabra que se lee igual de izquierda a derecha y de derecha a izquierda, ignorando los espacios. \n\n Entrada: word: str \n\n Salidas: bool : True si la palabra es palindromo, False en caso contrario.',
             'image_url': url_for('static', filename='img/buble-logo.png'),
             'stars': 3,
-            'test': {
-                'one': {'description': 'Prueba #1', 'result': True},
-                'two': {'description': 'Prueba #2', 'result': False},
-                'three': {'description': 'Prueba #3', 'result': True},
-            },
             'languages': {
-                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
-                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
+                'python': {'code': 'def is_palindrome(word):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class Palindrome\n    {\n        public bool _palindrome(string word)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'}
             }
         },
         {
             'title': 'BinarySearch',
-            'problem': 'Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo \n Entrada: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar \n Salida: int: El indice del target en el arreglo si se encuentra, Si no es en el arreglo se devuelve -1) ',
+            'problem': 'Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo. \n\n Entrada: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar).\n\n Salida: int: El indice del target en el arreglo si se encuentra. En caso contrario, se devuelve -1). ',
             'image_url': url_for('static', filename='img/binary-logo.png'),
             'stars': 4,
-            'test': {
-                'one': {'description': 'Prueba #1', 'result': False},
-                'two': {'description': 'Prueba #2', 'result': False},
-                'three': {'description': 'Prueba #3', 'result': False},
-                'Four': {'description': 'Prueba #4', 'result': False},
-                'Five': {'description': 'Prueba #5', 'result': False},
-            },
             'languages': {
-                'python': {'code': 'def fizzbuzz(numbers):\n    result = []\n    for number in numbers:\n        if number % 3 == 0 and number % 5 == 0:\n            result.append("FizzBuzz")\n        elif number % 3 == 0:\n            result.append("Fizz")\n        elif number % 5 == 0:\n            result.append("Buzz")\n        else:\n            result.append(number)\n    return result'},
-                'c#': {'code': '/* C code */\n#include <stdio.h>\nvoid fizzbuzz(int numbers[], int length) {\n    for (int i = 0; i < length; i++) {\n        if (numbers[i] % 3 == 0 && numbers[i] % 5 == 0) printf("FizzBuzz\\n");\n        else if (numbers[i] % 3 == 0) printf("Fizz\\n");\n        else if (numbers[i] % 5 == 0) printf("Buzz\\n");\n        else printf("%d\\n", numbers[i]);\n    }\n}'}
+                'python': {'code': 'def binary_search(arr, target):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'}
             }
         },
     ]

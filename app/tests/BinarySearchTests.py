@@ -4,13 +4,13 @@ import sys
 class BinarySearchTests():
 
     def __init__(self) -> None:
-        # Tests: (lista, objetivo, resultado esperado)
+       
         self._tests = [
-            ([1, 2, 3, 4, 5], 3, 2),  # Elemento encontrado en la posición 2
-            ([10, 20, 30, 40, 50], 10, 0),  # Primer elemento
-            ([10, 20, 30, 40, 50], 50, 4),  # Último elemento
-            ([5, 7, 11, 17, 19], 13, -1),  # No encontrado
-            ([], 1, -1)  # Lista vacía
+            ([1, 2, 3, 4, 5], 3, 2),  
+            ([10, 20, 30, 40, 50], 10, 0),  
+            ([10, 20, 30, 40, 50], 50, 4), 
+            ([5, 7, 11, 17, 19], 13, -1), 
+            ([], 1, -1)  
         ]
 
     def tests(self, name):

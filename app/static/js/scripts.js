@@ -66,7 +66,17 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
     .then(data => {
       console.log('Éxito:', data);
 
-      dataBools = data['message'];
+      let dataBools = data['message'];
+      
+      if (language == 'csharp'){
+
+        dataBools = dataBools.slice(1, -1);
+        console.log(dataBools);
+        let boolArrayStr = dataBools.split(","); 
+
+        dataBools = boolArrayStr.map(str => str.trim() === 'true');
+
+      }
       
       const container = document.querySelector('#containerTest');
 

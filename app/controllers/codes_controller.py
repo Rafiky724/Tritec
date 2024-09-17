@@ -13,8 +13,7 @@ class CodesController():
         self.name = name
 
     def write_code(self):
-        file_name = f"app/problem_solver/{self.name.lower()}.py"  # Usar '/' para compatibilidad entre sistemas
-        #print(f"Writing to file: {file_name}")
+        file_name = f"app/problem_solver/{self.name.lower()}.py"  
 
         try:
             with open(file_name, 'w') as file:
