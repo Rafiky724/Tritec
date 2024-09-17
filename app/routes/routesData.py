@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, render_template, request, url_for
-
-from migrate.db import getResult
-
+try:
+    from migrate.db import getResult
+except ImportError as e:
+    print(f"Error: Unable to import 'migrate.db'. {str(e)}")
+    
 bp = Blueprint('bp', __name__)
 
 @bp.route('/enviar', methods=['POST'])
@@ -12,15 +14,11 @@ def send_code():
     code_user = data.get('code')
     language = data.get('language')
     problem = data.get('problem')
-    
     resultado = getResult(code_user, language, problem)
-    
     if(language == "csharp"):
         resultado = resultado.text
 
-
-    return jsonify({"message": resultado}), 201
-    
+    return jsonify({"message": resultado}), 201   
 
 @bp.route('/')
 def home():
