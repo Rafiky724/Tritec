@@ -65,8 +65,13 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
     .then(response => response.json())
     .then(data => {
       console.log('Éxito:', data);
-
-      let dataBools = data['message'];
+      let dataBools
+      try {
+        dataBools = data['message'];
+      } catch (error) {
+        console.log('Error:', error);
+        alert("ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+      }
       
       if (language == 'csharp'){
 
@@ -106,9 +111,26 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
         numberTest++;
       });
 
+      if (dataBools.every(elemnt => elemnt === true)){
+
+        setTimeout(function() {
+          alert('Felicidades. Tu código ha pasado todas las pruebas.');
+        }, 500); 
+
+      }else{
+
+        setTimeout(function() {
+          alert('Error. Tu código no ha pasado todas las pruebas.');
+        }, 500); 
+
+      }
+
     })
     .catch((error) => {
       console.error('Error:', error);
+      setTimeout(function() {
+        alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código."');
+      }, 500); 
     });
 
 
