@@ -180,3 +180,125 @@ namespace TritecAPI.problem_solver
     }
 }
 '''
+
+4. **Integer to Roman**
+
+#Python
+
+'''
+def integer_to_roman(num):
+    val = [
+        1000, 900, 500, 400,
+        100, 90, 50, 40,
+        10, 9, 5, 4,
+        1
+    ]
+    syms = [
+        "M", "CM", "D", "CD",
+        "C", "XC", "L", "XL",
+        "X", "IX", "V", "IV",
+        "I"
+    ]
+    roman_num = ''
+    i = 0
+    while num > 0:
+        for _ in range(num // val[i]):
+            roman_num += syms[i]
+            num -= val[i]
+        i += 1
+    return roman_num
+'''
+
+5. **Roman to Integer**
+
+#Python
+
+'''
+def roman_to_integer(num):
+    roman_numerals = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+    
+    total = 0
+    prev_value = 0
+    
+    for char in reversed(num):
+        value = roman_numerals[char]
+        
+        if value < prev_value:
+            total -= value
+        else:
+            total += value
+        
+        prev_value = value
+    
+    return total
+'''
+
+6. **Money To English**
+
+#Python
+
+'''
+def money_to_english(num):
+    if num < 0:
+        return "negative " + money_to_english(-num)
+    
+    units = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", 
+             "sixteen", "seventeen", "eighteen", "nineteen"]
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+    if num == 0:
+        return "zero dollars"
+    
+    dollars = int(num)
+    cents = round((num - dollars) * 100)
+    
+    words = []
+    
+    if dollars >= 1000:
+        words.append(units[dollars // 1000] + " thousand")
+        dollars %= 1000
+    
+    if dollars >= 100:
+        words.append(units[dollars // 100] + " hundred")
+        dollars %= 100
+    
+    if dollars >= 20:
+        words.append(tens[dollars // 10])
+        dollars %= 10
+    
+    if dollars >= 10:
+        words.append(teens[dollars - 10])
+        dollars = 0
+    
+    if dollars > 0:
+        words.append(units[dollars])
+    
+    dollar_words = " ".join(words).strip() + (" dollar" if len(words) == 1 and words[0] == "one" else " dollars")
+    
+    if cents > 0:
+        words = []
+        if cents >= 20:
+            words.append(tens[cents // 10])
+            cents %= 10
+        
+        if cents >= 10:
+            words.append(teens[cents - 10])
+            cents = 0
+        
+        if cents > 0:
+            words.append(units[cents])
+        
+        cent_words = " ".join(words).strip() + (" cent" if len(words) == 1 and words[0] == "one" else " cents")
+        return f"{dollar_words} and {cent_words}"
+    
+    return dollar_words
+'''

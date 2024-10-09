@@ -5,6 +5,9 @@ try:
     from app.tests.BinarySearchTests import BinarySearchTests
     from app.tests.PalindromeTests import PalindromeTests
     from app.tests.FizzBuzzTests import FizzBuzzTests
+    from app.tests.IntegerToRomanTests import IntegerToRomanTests
+    from app.tests.RomanToIntegerTests import RomanToIntegerTests
+    from app.tests.MoneyToEnglishTests import MoneyToEnglishTests
 except ImportError as e:
     print(f"Error: Unable to import. {str(e)}")
 
@@ -43,6 +46,19 @@ class CodesController():
                 if self.name == 'Palindrome':
                     tests_palindrome = PalindromeTests()
                     return tests_palindrome.tests(self.name)
+                
+                if self.name == 'IntegerToRoman':
+                    tests_integerToRoman = IntegerToRomanTests()
+                    return tests_integerToRoman.tests(self.name)
+                
+                if self.name == 'RomanToInteger':
+                    tests_romanToInteger = RomanToIntegerTests()
+                    return tests_romanToInteger.tests(self.name)
+                
+                if self.name == 'MoneyToEnglish':
+                    tests_moneyToEnglish = MoneyToEnglishTests()
+                    print(tests_moneyToEnglish)
+                    return tests_moneyToEnglish.tests(self.name)
 
             except ImportError as e:
                 print(f"Error al cargar el módulo {self.name}: {e}")

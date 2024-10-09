@@ -42,6 +42,24 @@ def home():
             'image_url': url_for('static', filename='img/binary-logo.png'),
             'stars': 4
         },
+        {
+            'title': 'IntegerToRoman',
+            'description': 'El algoritmo de Integer to Roman convierte un número entero a su representación en números romanos utilizando un enfoque de resta. Se utilizan listas de valores y símbolos romanos para formar la representación correcta a partir de la entrada numérica.',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 5
+        },
+        {
+            'title': 'RomanToInteger',
+            'description': 'AA',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 4
+        },
+        {
+            'title': 'MoneyToEnglish',
+            'description': 'AA',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 1
+        },
     ]
 
     return render_template('index.html', cards=enumerate(cards))
@@ -82,6 +100,36 @@ def problems():
             'languages': {
                 'python': {'code': 'def binary_search(arr, target):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'}
+            }
+        },
+        {
+            'title': 'IntegerToRoman',
+            'problem': 'Dada un entero, convierte el número en su representación en números romanos. \n\n Entrada: num (Un entero entre 1 y 3999).\n\n Salida: string: La representación en números romanos del entero proporcionado.',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 5,
+            'languages': {
+                'python': {'code': 'def integer_to_roman(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
+        {
+            'title': 'RomanToInteger',
+            'problem': 'aa',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 4,
+            'languages': {
+                'python': {'code': 'def roman_to_integer(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
+        {
+            'title': 'MoneyToEnglish',
+            'problem': 'aa',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'stars': 1,
+            'languages': {
+                'python': {'code': 'def money_to_english(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
             }
         },
     ]
