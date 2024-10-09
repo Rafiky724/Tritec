@@ -34,6 +34,11 @@ nav ul li a {
   font-weight: bold;
 }
 
+.image-home {
+  width: 150px;
+  height: auto;
+}
+
 .container {
   padding: 20px;
 }
@@ -87,11 +92,11 @@ nav ul li a {
   background-color: #012e40;
 }
 
-.title-block{
+.title-block {
   font-size: small;
 }
 
-.right{
+.right {
   background-color: #004459;
 }
 
@@ -152,14 +157,14 @@ nav ul li a {
   width: 55px;
 }
 
-.runCode{
+.runCode {
   background-color: #07d88d;
   color: #012e40;
   cursor: pointer;
   font-size: small;
 }
 
-.test-block{
+.test-block {
   background-color: #012e40;
   height: 60px;
   width: 150px;
@@ -167,7 +172,7 @@ nav ul li a {
   font-size: small;
 }
 
-.starss{
+.starss {
   width: 30px !important;
 }
 
@@ -175,7 +180,7 @@ nav ul li a {
   width: 30px;
 }
 
-.tests{
+.tests {
   font-family: "PT Mono", monospace;
   font-weight: 400;
   font-style: normal;
@@ -183,21 +188,21 @@ nav ul li a {
   background-color: #004459;
 }
 
-.language{
+.language {
   width: 120px;
   height: 40px;
   background-color: #012e40;
 }
 
-.arrow-button{
+.arrow-button {
   cursor: pointer;
 }
 
 @media screen and (min-height: 800px) {
-  .col-2-mid{
+  .col-2-mid {
     min-height: 700px !important;
   }
-  .CodeMirror{
+  .CodeMirror {
     min-height: 700px !important;
   }
 }
