@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="p-2 navbar-color">
+      <ul class="flex space-x-4 items-center justify-between ml-2 mr-2">
+        <li>
+          <a href="{{ url_for('bp.home') }}">
+            <img
+              src="{{ url_for('static', filename='img/logo.png') }}"
+              alt="logo"
+              class="logo"
+            />
+          </a>
+        </li>
+      </ul>
+
+      <div class="flex items-center justify-center tarjet">
+        <div class="color-card rounded-lg shadow-lg p-8 text-white" style="width: 450px;">
+          <h2 class="text-2xl font-bold mb-1">Iniciar Sesión</h2>
+          <p class="text-gray-600 mb-6 text-white">
+            Llena la siguiente información para continuar
+          </p>
+
+          <form>
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium text-white"
+                >Correo electrónico</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                placeholder="Ingresa el correo"
+                required
+              />
+            </div>
+            <div class="mb-4">
+              <label for="password" class="block text-sm font-medium text-white"
+                >Contraseña</label
+              >
+              <input
+                type="password"
+                id="password"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                placeholder="Ingresa tu contraseña"
+                required
+              />
+            </div>
+            <div class="text-left mb-6">
+              <a href="#" class="text-sm text-white hover:underline"
+                >Olvidaste tu contraseña?</a
+              >
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-green-300 text-black font-bold py-2 rounded-lg hover:bg-blue-500 transition mb-2"
+              style="background-color: #07d78c;"
+            >
+              Iniciar Sesión
+            </button>
+          </form>
+          <div class="flex justify-center items-center">
+            <div class="separate"></div>
+            <div style="color: #041626; font-weight: 900">O</div>
+            <div class="separate"></div>
+          </div>
+
+          <div class="mt-2 text-center">
+            <a href="{{ url_for('bp.register') }}">
+              <button
+                type="submit"
+                class="w-full text-black font-bold py-2 rounded-lg"
+                style="background-color: #d5f4f7"
+              >
+                Registrarse
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

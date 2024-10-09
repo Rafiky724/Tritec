@@ -1,0 +1,46 @@
+body {
+    background-color: #041626;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 15px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navbar-color {
+    height: 50vh;
+    background-color: #012e40;
+  }
+  
+  li img {
+    width: 120px;
+  }
+  
+  .tarjet {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+  }
+  
+  .color-card {
+    background-color: #136789;
+  }
+  
+  .separate {
+    border: 1px solid #041626;
+    width: 100%;
+    margin: 0 5px;
+  }
+  

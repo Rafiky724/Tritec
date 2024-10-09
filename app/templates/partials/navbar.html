@@ -1,5 +1,5 @@
 <nav class="p-2 navbar-color">
-  <ul class="flex space-x-4 justify-center">
+  <ul class="flex space-x-4 items-center justify-between ml-2 mr-2">
     <li>
       <a href="{{ url_for('bp.home') }}">
         <img
@@ -8,6 +8,9 @@
           class="logo"
         />
       </a>
+    </li>
+    <li>
+      <a href="{{ url_for('bp.login') }}">Iniciar Sesion</a>
     </li>
   </ul>
 </nav>

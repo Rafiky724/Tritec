@@ -97,3 +97,10 @@ def problems():
 
     return render_template('problems.html', problem=problem)
 
+@bp.route('/login')
+def login():    
+    return render_template('login.html')
+
+@bp.route('/register')
+def register():    
+    return render_template('register.html')
