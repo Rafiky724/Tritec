@@ -69,8 +69,8 @@ class CodesController():
                     return tests_towerofhanoi.tests(self.name) 
 
                 if self.name == "SpiralMatrix":
-                    tests_SpiralMatrix =  SpiralMatrixTest()  
-                    return tests_SpiralMatrix.tests(self.name)  
+                    tests_spiralmatrix =  SpiralMatrixTest()  
+                    return tests_spiralmatrix.tests(self.name)  
                 
 
 

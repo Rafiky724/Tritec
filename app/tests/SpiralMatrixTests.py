@@ -30,7 +30,7 @@ class SpiralMatrixTest():
         return resultado
     
     def reload_module(self, name):
-        module_name = f"app.problem_solver.SpiralMatrix"
+        module_name = f"app.problem_solver.spiralmatrix"
         if module_name in sys.modules:
             importlib.reload(sys.modules[module_name])
         else:
