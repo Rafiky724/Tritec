@@ -23,7 +23,7 @@ class TowerOfHanoiTests:
         resultados = []
         for entrada, esperado in self._tests:
             try:
-                from app.problem_solver.Towerofhanoi import tower_of_hanoi 
+                from app.problem_solver.towerofhanoi import tower_of_hanoi 
                 resultado = tower_of_hanoi(entrada)
                 print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:

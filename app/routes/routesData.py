@@ -66,6 +66,12 @@ def home():
             'image_url': url_for('static', filename='img/hanoi.png'),
             'stars': 4
         },
+        {
+            'title': 'SpiralMatrix',
+            'description': 'Dada una matriz, imprime todos los elementos en orden espiral..',
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 4
+        },
     ]
 
     return render_template('index.html', cards=enumerate(cards))
@@ -148,6 +154,17 @@ def problems():
                 'c#': {'code': 'x'}
             }
         }, 
+
+        {
+            'title': 'SpiralMatrix',
+            'problem': 'Dada una matriz en el order espiral, es decir desde la esquina superior izquierda, hacia la derecha, luego hacia abajo, luego a la izquierda y finalmente hacia arriba, repitiendo este patrón hasta recorrer toda la matriz \n\n Límites:  Tendremos cuatro "límites" que nos ayudarán a controlar la dirección en la que estamos moviéndonos. (Top, bottom, left, right) ',
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 4,
+            'languages': {
+                'python': {'code': 'def SpiralMatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
 
     ]
 
