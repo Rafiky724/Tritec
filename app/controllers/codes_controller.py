@@ -8,7 +8,6 @@ try:
     from app.tests.IntegerToRomanTests import IntegerToRomanTests
     from app.tests.RomanToIntegerTests import RomanToIntegerTests
     from app.tests.MoneyToEnglishTests import MoneyToEnglishTests
-    from app.tests.TowerOfHanoiTests import TowerOfHanoiTests
     from app.tests.SpiralMatrixTests import SpiralMatrixTest
 
 
@@ -63,17 +62,11 @@ class CodesController():
                     tests_moneyToEnglish = MoneyToEnglishTests()
                     print(tests_moneyToEnglish)
                     return tests_moneyToEnglish.tests(self.name)
-                
-                if self.name == "TowerOfHanoi":
-                    tests_towerofhanoi =  TowerOfHanoiTests()  
-                    return tests_towerofhanoi.tests(self.name) 
 
                 if self.name == "SpiralMatrix":
                     tests_spiralmatrix =  SpiralMatrixTest()  
                     return tests_spiralmatrix.tests(self.name)  
                 
-
-
             except ImportError as e:
                 print(f"Error al cargar el módulo {self.name}: {e}")
 
