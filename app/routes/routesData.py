@@ -63,25 +63,25 @@ def home():
         {
             'title': 'SpiralMatrix',
             'description': 'El problema de "Spiral Matrix" consiste en, dada una matriz de enteros de dimensiones m x n (donde m es el número de filas y n es el número de columnas), imprimir los elementos de la matriz en un orden espiral',
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/spiral-logo.png'),
             'stars': 4
         },
         {
             'title': 'MedianOfTwoSortedArrays',
             'description': "'El problema de \"Median of Two Sorted Arrays\" consiste en, dadas dos matrices ordenadas, nums1 y nums2 de tamaño m y n respectivamente, devolver la mediana de las dos matrices ordenadas. La mediana es el valor que separa la mitad superior de la mitad inferior de los elementos cuando las dos matrices se combinan y se ordenan.'",
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/median-logo.png'),
             'stars': 2
         },
         {
             'title': 'LongerValidParentheses',
             'description': "'El problema de \"Longer valid parentheses\" consiste Dada una cadena que contiene solo los caracteres '(' y ')', devuelve la longitud del paréntesis válido más largo'",
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/parentheses-logo.png'),
             'stars': 3
         },
         {
             'title': 'CountofSmallerNumbersAfterSelf',
             'description': "'El problema de \"Count of Smaller Numbers After Self\" Consistes en dada una matriz con numeros enteros, se debera devolver una matriz de enteros donde sus elementos sean el numero de elemenentos mas pequeños a la derecha de nums[i]'",
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/count-logo.png'),
             'stars': 1
         },
 
@@ -160,7 +160,7 @@ def problems():
         {
             'title': 'SpiralMatrix',
             'problem': '<b>OBJETIVO:</b> \n\n El objetivo de El recorrido debe comenzar desde la esquina superior izquierda y seguir un patrón espiral, recorriendo la matriz de manera secuencial a lo largo de sus bordes y luego hacia el interior, hasta que todos los elementos hayan sido impresos. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> \n\n [[1,2,3], \n [4,5,6], \n [7,8,9]] \n\n <b>Salida:</b>: [1, 2, 3, 6, 9, 8, 7, 4, 5] ',
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/spiral-logo.png'),
             'stars': 4,
             'languages': {
                 'python': {'code': 'def spiralmatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
@@ -170,30 +170,30 @@ def problems():
         {
             'title': 'MedianOfTwoSortedArrays',
             'problem': '<b>OBJETIVO:</b> \n\n El objetivo es que dado dos arreglos ordenados nums1 y nums2, el objetivo es encontrar la mediana de la combinación de ambos sin fusionarlos completamente. La solución eficiente utiliza búsqueda binaria en el arreglo más pequeño para dividir ambos arreglos en dos subarreglos de tal manera que la cantidad de elementos a la izquierda de la división sea igual (o casi igual, si el total es impar). Asegurándose de que los elementos de la mitad izquierda sean menores que los de la mitad derecha, se calcula la mediana.',
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/median-logo.png'),
             'stars': 2,
             'languages': {
-                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'python': {'code': 'def median_of_two_sorted_arrays(nums1, nums2):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'x'}
             }
         },
         {
             'title': 'LongerValidParentheses',
             'problem': '<b>OBJETIVO:</b> \n\n Dado la cadena que contiene caracteres parentesis, el objetivo es encontrar la maxima cantidad de parentesis correctamente cerrados \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: s = = ")()())" \n\n <b>Salida:</b>: 2 \n\n Explicación: La cantidad de parentesis válida es "La subcadena de paréntesis válida más larga es "()()". <b>Ejemplo:</b> \n\n<b>Entrada:</b> nums1 = [1, 3], nums2 = [2] <br> \n\n <b>Salida:</b> 2.0 <br><br \n\n <b>Explicacion:</b>: Los dos arreglos combinados son [1, 2, 3]. La mediana es el valor en el medio, que es 2.',
-            'image_url': url_for('static', filename='img/ValidParentheses.png'),
+            'image_url': url_for('static', filename='img/parentheses-logo.png'),
             'stars': 3,
             'languages': {
-                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'python': {'code': 'def longer_valid_parentheses(s):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'x'}
             }
         },
         {
             'title': 'CountofSmallerNumbersAfterSelf',
             'problem': '<b>OBJETIVO:</b> \n\n Este problema se refiere a contar cuántos elementos a la derecha de un número son más pequeños que ese número. La idea es iterar a través del arreglo y para cada elemento contar cuántos números a la derecha son menores que el número actual. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: nums = [5,2,6,1] \n\n <b>Salida:</b>: [2,1,1,0] \n\n <b>Explicacion:</b>: A la derecha de 5 hay 2 elementos más pequeños (2 y 1). \n\n' ,
-            'image_url': url_for('static', filename='img/matrix.png'),
+            'image_url': url_for('static', filename='img/count-logo.png'),
             'stars': 1,
             'languages': {
-                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'python': {'code': 'def count_Smaller(nums):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'x'}
             }
         },

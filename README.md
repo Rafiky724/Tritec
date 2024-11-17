@@ -338,3 +338,57 @@ def spiralmatrix(matrix):
     return result
 
 '''
+
+
+8. **Median Of Two Sorted Arrays**
+
+'''
+def median_of_two_sorted_arrays(nums1, nums2):
+    nums1.extend(nums2)
+    sorted_array = sorted(nums1)
+    tamanio = len(sorted_array)
+
+    if tamanio % 2 == 1:
+        mediana = sorted_array[tamanio // 2]
+    else:
+        mediana = (sorted_array[tamanio // 2 - 1] + sorted_array[tamanio // 2]) / 2.0 
+    return mediana
+'''
+
+9. **Longer Valid Parentheses**
+
+'''
+def longer_valid_parentheses(s):
+    stack = []  
+    count = 0  
+
+    for char in s:
+        if char == "(":  
+            stack.append("(")  
+        elif char == ")":  
+            if stack:  
+                stack.pop()  
+                count += 1  
+
+    return count  
+'''
+
+10. **Count Of Smaller Numbers After Self**
+
+'''
+
+def count_Smaller(nums):
+    """
+    :type nums: List[int]
+    :rtype: List[int]
+    """
+    counts = [0] * len(nums)
+        
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[j] < nums[i]:
+                counts[i] += 1
+        
+    return counts
+
+'''

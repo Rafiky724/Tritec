@@ -9,7 +9,10 @@ try:
     from app.tests.RomanToIntegerTests import RomanToIntegerTests
     from app.tests.MoneyToEnglishTests import MoneyToEnglishTests
     from app.tests.SpiralMatrixTests import SpiralMatrixTest
-
+    from app.tests.MedianOfTwoSortedArraysTests import MedianOfTwoSortedArraysTests
+    from app.tests.LongerValidParenthesesTests import LongerValidParenthesesTests
+    from app.tests.CountofSmallerNumbersAfterSelfTests import CountofSmallerNumbersAfterSelfTests
+    
 
 except ImportError as e:
     print(f"Error: Unable to import. {str(e)}")
@@ -60,12 +63,23 @@ class CodesController():
                 
                 if self.name == 'MoneyToEnglish':
                     tests_moneyToEnglish = MoneyToEnglishTests()
-                    print(tests_moneyToEnglish)
                     return tests_moneyToEnglish.tests(self.name)
 
                 if self.name == "SpiralMatrix":
-                    tests_spiralmatrix =  SpiralMatrixTest()  
-                    return tests_spiralmatrix.tests(self.name)  
+                    tests_spiralmatrix =  SpiralMatrixTest()
+                    return tests_spiralmatrix.tests(self.name)
+                
+                if self.name == "MedianOfTwoSortedArrays":
+                    tests_MedianOfTwoSortedArrays = MedianOfTwoSortedArraysTests()
+                    return tests_MedianOfTwoSortedArrays.tests(self.name)  
+                
+                if self.name == "LongerValidParentheses":
+                    tests_LongerValidParentheses = LongerValidParenthesesTests()  
+                    return tests_LongerValidParentheses.tests(self.name)  
+
+                if self.name == "CountofSmallerNumbersAfterSelf":
+                    tests_CountofSmallerNumbersAfterSelf = CountofSmallerNumbersAfterSelfTests()  
+                    return tests_CountofSmallerNumbersAfterSelf.tests(self.name)
                 
             except ImportError as e:
                 print(f"Error al cargar el módulo {self.name}: {e}")
