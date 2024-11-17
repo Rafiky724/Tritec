@@ -343,9 +343,9 @@ def spiralmatrix(matrix):
 8. **Median Of Two Sorted Arrays**
 
 '''
-def median_of_two_sorted_arrays(nums1, nums2):
-    nums1.extend(nums2)
-    sorted_array = sorted(nums1)
+def median_of_two_sorted_arrays(array1, array2):
+    array1.extend(array2)
+    sorted_array = sorted(array1)
     tamanio = len(sorted_array)
 
     if tamanio % 2 == 1:

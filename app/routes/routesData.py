@@ -104,6 +104,9 @@ def problems():
                 'python': {'code': 'def fizzbuzz(n):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 "c#": {
                     "code": "using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class FizzBuzz : IProblemSolver\n    {\n        public string _fizzBuzz(long number)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}"
+                },
+                "java": {
+                    "code": "public class FizzBuzz {\n    \n    public static String fizzBuzz(int numero) {\n        if (numero % 3 == 0 && numero % 5 == 0) {\n            return \"FizzBuzz\"; // Si es divisible por 3 y 5, retorna \"FizzBuzz\"\n        } else if (numero % 3 == 0) {\n            return \"Fizz\"; // Si es divisible solo por 3, retorna \"Fizz\"\n        } else if (numero % 5 == 0) {\n            return \"Buzz\"; // Si es divisible solo por 5, retorna \"Buzz\"\n        } else {\n            return Integer.toString(numero); // Si no es divisible ni por 3 ni por 5, retorna el número\n        }\n    }\n}"
                 }
             }
         },            
@@ -114,7 +117,9 @@ def problems():
             'stars': 2,
             'languages': {
                 'python': {'code': 'def is_palindrome(word):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class Palindrome\n    {\n        public bool _palindrome(string word)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'}
+                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class Palindrome\n    {\n        public bool _palindrome(string word)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'java': {"code": "public class Palindrome {\n    public static boolean isPalindrome(String word) {\n        // Eliminar espacios y convertir a minúsculas\n        word = word.replace(\" \", \"\").toLowerCase();\n        \n        int length = word.length();\n        for (int i = 0; i < length / 2; i++) {\n            if (word.charAt(i) != word.charAt(length - i - 1)) {\n                return false;\n            }\n        }\n        return true;\n    }\n}"}
+                
             }
         },
         {
@@ -124,7 +129,8 @@ def problems():
             'stars': 2,
             'languages': {
                 'python': {'code': 'def binary_search(arr, target):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'}
+                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                "java": {"code": "public class BinarySearch {\n    public static int binarySearch(int[] arr, int target) {\n        int left = 0, right = arr.length - 1;\n        while (left <= right) {\n            int mid = (left + right) / 2;\n            if (arr[mid] == target) {\n                return mid;\n            } else if (arr[mid] < target) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n        return -1;\n    }\n}"}
             }
         },
         {
@@ -134,7 +140,8 @@ def problems():
             'stars': 3,
             'languages': {
                 'python': {'code': 'def integer_to_roman(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "public class IntegerToRoman {\n    public static String integerToRoman(int num) {\n        // Arreglo con los valores de los números romanos\n        int[] val = {\n            1000, 900, 500, 400,\n            100, 90, 50, 40,\n            10, 9, 5, 4,\n            1\n        };\n\n        // Arreglo con los símbolos correspondientes a cada valor\n        String[] syms = {\n            \"M\", \"CM\", \"D\", \"CD\",\n            \"C\", \"XC\", \"L\", \"XL\",\n            \"X\", \"IX\", \"V\", \"IV\",\n            \"I\"\n        };\n\n        // Cadena para almacenar el resultado\n        StringBuilder romanNum = new StringBuilder();\n\n        // Iterar sobre los valores romanos\n        for (int i = 0; i < val.length; i++) {\n            // Mientras el número sea mayor que el valor actual\n            while (num >= val[i]) {\n                romanNum.append(syms[i]);  // Añadir el símbolo correspondiente\n                num -= val[i];             // Restar el valor de num\n            }\n        }\n\n        return romanNum.toString();\n    }\n}"}
             }
         },
         {
@@ -144,7 +151,8 @@ def problems():
             'stars': 3,
             'languages': {
                 'python': {'code': 'def roman_to_integer(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "import java.util.HashMap;\nimport java.util.Map;\n\npublic class RomanToInteger {\n    public static int romanToInteger(String num) {\n        // Crear un mapa de los valores de los números romanos\n        Map<Character, Integer> romanNumerals = new HashMap<>();\n        romanNumerals.put('I', 1);\n        romanNumerals.put('V', 5);\n        romanNumerals.put('X', 10);\n        romanNumerals.put('L', 50);\n        romanNumerals.put('C', 100);\n        romanNumerals.put('D', 500);\n        romanNumerals.put('M', 1000);\n\n        int total = 0;\n        int prevValue = 0;\n\n        // Recorrer el número romano de derecha a izquierda\n        for (int i = num.length() - 1; i >= 0; i--) {\n            char currentChar = num.charAt(i);\n            int value = romanNumerals.get(currentChar);\n\n            // Si el valor actual es menor que el valor anterior, restamos, sino sumamos\n            if (value < prevValue) {\n                total -= value;\n            } else {\n                total += value;\n            }\n\n            prevValue = value;  // Actualizamos el valor anterior\n        }\n\n        return total;\n    }\n}"}
             }
         },
         {
@@ -154,7 +162,8 @@ def problems():
             'stars': 4,
             'languages': {
                 'python': {'code': 'def money_to_english(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "public class MoneyToEnglish {\n    \n    public static String moneyToEnglish(double num) {\n        if (num < 0) {\n            return \"negative \" + moneyToEnglish(-num);\n        }\n\n        // Arrays con las palabras correspondientes\n        String[] units = {\"\", \"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\", \"eight\", \"nine\"};\n        String[] teens = {\"ten\", \"eleven\", \"twelve\", \"thirteen\", \"fourteen\", \"fifteen\", \n                          \"sixteen\", \"seventeen\", \"eighteen\", \"nineteen\"};\n        String[] tens = {\"\", \"\", \"twenty\", \"thirty\", \"forty\", \"fifty\", \"sixty\", \"seventy\", \"eighty\", \"ninety\"};\n\n        // Si el número es 0\n        if (num == 0) {\n            return \"zero dollars\";\n        }\n\n        // Separar la parte de los dólares y los centavos\n        int dollars = (int) num;\n        int cents = (int) Math.round((num - dollars) * 100);\n\n        StringBuilder words = new StringBuilder();\n\n        // Convertir dólares a palabras\n        if (dollars >= 1000) {\n            words.append(units[dollars / 1000]).append(\" thousand \");\n            dollars %= 1000;\n        }\n\n        if (dollars >= 100) {\n            words.append(units[dollars / 100]).append(\" hundred \");\n            dollars %= 100;\n        }\n\n        if (dollars >= 20) {\n            words.append(tens[dollars / 10]).append(\" \");\n            dollars %= 10;\n        }\n\n        if (dollars >= 10) {\n            words.append(teens[dollars - 10]).append(\" \");\n            dollars = 0;\n        }\n\n        if (dollars > 0) {\n            words.append(units[dollars]).append(\" \");\n        }\n\n        // Agregar \"dollar\" o \"dollars\"\n        String dollarWords = words.toString().trim() + (words.toString().trim().equals(\"one\") ? \" dollar\" : \" dollars\");\n\n        // Si hay centavos, convertirlos a palabras\n        if (cents > 0) {\n            words.setLength(0); // Limpiar el StringBuilder para los centavos\n\n            if (cents >= 20) {\n                words.append(tens[cents / 10]).append(\" \");\n                cents %= 10;\n            }\n\n            if (cents >= 10) {\n                words.append(teens[cents - 10]).append(\" \");\n                cents = 0;\n            }\n\n            if (cents > 0) {\n                words.append(units[cents]).append(\" \");\n            }\n\n            // Agregar \"cent\" o \"cents\"\n            String centWords = words.toString().trim() + (words.toString().trim().equals(\"one\") ? \" cent\" : \" cents\");\n            return dollarWords + \" and \" + centWords;\n        }\n\n        return dollarWords;\n    }\n}"}
             }
         },
         {
@@ -164,7 +173,8 @@ def problems():
             'stars': 4,
             'languages': {
                 'python': {'code': 'def spiralmatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class SpiralMatrix {\n    public static List<Integer> spiralMatrix(int[][] matrix) {\n        List<Integer> result = new ArrayList<>();\n        \n        // Verificar si la matriz está vacía\n        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {\n            return result;\n        }\n\n        int top = 0, bottom = matrix.length - 1;\n        int left = 0, right = matrix[0].length - 1;\n\n        while (top <= bottom && left <= right) {\n            // Recorrer de izquierda a derecha en la fila superior\n            for (int i = left; i <= right; i++) {\n                result.add(matrix[top][i]);\n            }\n            top++;\n\n            // Recorrer de arriba a abajo en la columna derecha\n            for (int i = top; i <= bottom; i++) {\n                result.add(matrix[i][right]);\n            }\n            right--;\n\n            // Recorrer de derecha a izquierda en la fila inferior (si aún es válida)\n            if (top <= bottom) {\n                for (int i = right; i >= left; i--) {\n                    result.add(matrix[bottom][i]);\n                }\n                bottom--;\n            }\n\n            // Recorrer de abajo a arriba en la columna izquierda (si aún es válida)\n            if (left <= right) {\n                for (int i = bottom; i >= top; i--) {\n                    result.add(matrix[i][left]);\n                }\n                left++;\n            }\n        }\n\n        return result;\n    }\n}"}
             }
         },
         {
@@ -173,8 +183,9 @@ def problems():
             'image_url': url_for('static', filename='img/median-logo.png'),
             'stars': 2,
             'languages': {
-                'python': {'code': 'def median_of_two_sorted_arrays(nums1, nums2):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'python': {'code': 'def median_of_two_sorted_arrays(array1, array2):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'},
+                'java': {"code": "import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class MedianOfTwoSortedArrays {\n    public static double medianOfTwoSortedArrays(int[] array1, int[] array2) {\n        // Crear una lista para combinar ambos arrays\n        int[] combinedArray = new int[array1.length + array2.length];\n        \n        // Copiar los elementos de ambos arrays a la lista combinada\n        System.arraycopy(array1, 0, combinedArray, 0, array1.length);\n        System.arraycopy(array2, 0, combinedArray, array1.length, array2.length);\n        \n        // Ordenar el array combinado\n        Arrays.sort(combinedArray);\n        \n        // Calcular el tamaño del array combinado\n        int size = combinedArray.length;\n        \n        // Si el tamaño es impar, la mediana es el valor del medio\n        if (size % 2 == 1) {\n            return combinedArray[size / 2];\n        } else {\n            // Si el tamaño es par, la mediana es el promedio de los dos valores centrales\n            return (combinedArray[size / 2 - 1] + combinedArray[size / 2]) / 2.0;\n        }\n    }\n}"}
             }
         },
         {
@@ -184,7 +195,8 @@ def problems():
             'stars': 3,
             'languages': {
                 'python': {'code': 'def longer_valid_parentheses(s):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "import java.util.Stack;\n\npublic class LongerValidParentheses {\n    public static int longerValidParentheses(String s) {\n        Stack<Integer> stack = new Stack<>();\n        stack.push(-1);  // Agregar un marcador inicial para manejar casos como \"()\"\n\n        int maxLength = 0;\n\n        for (int i = 0; i < s.length(); i++) {\n            char charAt = s.charAt(i);\n\n            if (charAt == '(') {\n                // Coloca el índice del paréntesis de apertura en la pila\n                stack.push(i);\n            } else if (charAt == ')') {\n                // Desapilar el índice del paréntesis de apertura correspondiente\n                stack.pop();\n\n                // Si la pila no está vacía, calcular la longitud del paréntesis válido\n                if (!stack.isEmpty()) {\n                    maxLength = Math.max(maxLength, i - stack.peek());\n                } else {\n                    // Si la pila está vacía, agregamos el índice actual como marcador base\n                    stack.push(i);\n                }\n            }\n        }\n\n        return maxLength/2;\n    }\n}"}
             }
         },
         {
@@ -194,7 +206,8 @@ def problems():
             'stars': 1,
             'languages': {
                 'python': {'code': 'def count_Smaller(nums):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'x'}
+                'c#': {'code': 'x'},
+                'java': {"code": "public class CountSmaller {\n    public static int[] countSmaller(int[] nums) {\n        int[] counts = new int[nums.length];\n        \n        for (int i = 0; i < nums.length; i++) {\n            for (int j = i + 1; j < nums.length; j++) {\n                if (nums[j] < nums[i]) {\n                    counts[i]++;\n                }\n            }\n        }\n        \n        return counts;\n    }\n}"}
             }
         },
 

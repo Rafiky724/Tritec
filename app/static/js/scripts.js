@@ -41,7 +41,11 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 
     language = "python";
 
-  } else {
+  } else if(languageDisplay.textContent === "Java") {
+
+    language = "java";
+
+  }else{
 
     language = "csharp";
 

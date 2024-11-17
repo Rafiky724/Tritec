@@ -1,15 +1,17 @@
 import importlib
 import sys
 from app.controllers.codes_controller import CodesController
+from app.controllers.codes_controller_java import CodesControllerJava
 import requests
 
 def getResult(user_code, language, problem):
     if language == "python":
-        print(language, problem)
         reload_module()
         return pythonProblem(user_code, problem)
     elif language == "csharp":
         return cSharpProblem(user_code, problem)
+    elif language == "java":
+        return javaProblem(user_code, problem)
     else:
         return "Invalid language"
 
@@ -28,7 +30,14 @@ def cSharpProblem(user_code, problem):
         return response
     else:
         return {"error": "Error"}
-    
+
+def javaProblem(user_code, problem):
+    problem = CodesControllerJava(user_code, problem)
+    response = problem.set_up()
+    print(response)
+    return response
+
+
 def reload_module():
     module_name = f"app.tests"
     if module_name in sys.modules:
