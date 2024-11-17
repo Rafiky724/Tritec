@@ -62,10 +62,29 @@ def home():
         },
         {
             'title': 'SpiralMatrix',
-            'description': 'Dada una matriz, imprime todos los elementos en orden espiral..',
+            'description': 'El problema de "Spiral Matrix" consiste en, dada una matriz de enteros de dimensiones m x n (donde m es el número de filas y n es el número de columnas), imprimir los elementos de la matriz en un orden espiral',
             'image_url': url_for('static', filename='img/matrix.png'),
-            'stars': 5
+            'stars': 4
         },
+        {
+            'title': 'MedianOfTwoSortedArrays',
+            'description': "'El problema de \"Median of Two Sorted Arrays\" consiste en, dadas dos matrices ordenadas, nums1 y nums2 de tamaño m y n respectivamente, devolver la mediana de las dos matrices ordenadas. La mediana es el valor que separa la mitad superior de la mitad inferior de los elementos cuando las dos matrices se combinan y se ordenan.'",
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 2
+        },
+        {
+            'title': 'LongerValidParentheses',
+            'description': "'El problema de \"Longer valid parentheses\" consiste Dada una cadena que contiene solo los caracteres '(' y ')', devuelve la longitud del paréntesis válido más largo'",
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 3
+        },
+        {
+            'title': 'CountofSmallerNumbersAfterSelf',
+            'description': "'El problema de \"Count of Smaller Numbers After Self\" Consistes en dada una matriz con numeros enteros, se debera devolver una matriz de enteros donde sus elementos sean el numero de elemenentos mas pequeños a la derecha de nums[i]'",
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 1
+        },
+
     ]
 
     return render_template('index.html', cards=enumerate(cards))
@@ -78,7 +97,7 @@ def problems():
         {},
         { 
             'title': 'FizzBuzz',
-            'problem': 'El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n Entrada: n: int : Un número entero (para python) o un numero long (para c#). \n\n Salidas: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena.',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n <b>Entrada:</b>: n: int : Un número entero (para python) o un numero long (para c#). \n\n <b>Salida:</b>: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> n = 15 \n\n <b>Salida:</b> = FizzBuzz \n\n <b>Explicacion:</b> = En este caso, 15 es divisible tanto por 3 como por 5, por lo que la salida es "FizzBuzz".',
             'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
             'stars': 3,
             "languages": {
@@ -90,7 +109,7 @@ def problems():
         },            
         {
             'title': 'Palindrome',
-            'problem': 'El objetivo es verificar si una palabra es palíndromo. Un palíndromo es una palabra que se lee igual de izquierda a derecha y de derecha a izquierda, ignorando los espacios. \n\n Entrada: word: str \n\n Salidas: bool : True si la palabra es palindromo, False en caso contrario.',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo es verificar si una palabra es palíndromo. Un palíndromo es una palabra que se lee igual de izquierda a derecha y de derecha a izquierda, ignorando los espacios. \n\n <b>Entrada:</b>: word: str \n\n <b>Salida:</b>: bool : True si la palabra es palindromo, False en caso contrario. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: \"anita lava la tina\" \n\n <b>Salida:</b> = True \n\n <b>Explicacion:</b> = La frase \"anita lava la tina\" es un palíndromo porque se lee igual de izquierda a derecha que de derecha a izquierda, ignorando los espacios. ',
             'image_url': url_for('static', filename='img/palindrome-logo.png'),
             'stars': 2,
             'languages': {
@@ -100,7 +119,7 @@ def problems():
         },
         {
             'title': 'BinarySearch',
-            'problem': 'Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo. \n\n Entrada: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar).\n\n Salida: int: El indice del target en el arreglo si se encuentra. En caso contrario, se devuelve -1). ',
+            'problem': '<b>OBJETIVO:</b> \n\n Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo. \n\n <b>Entrada:</b>: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar).\n\n <b>Salida:</b>: int: El indice del target en el arreglo si se encuentra. En caso contrario, se devuelve -1). \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: arr = [1, 3, 5, 7, 9, 11], target = 7 \n\n <b>Salida:</b> = 3 \n\n <b>Explicacion:</b> = El valor 7 se encuentra en la posicion 3 del arreglo  ',
             'image_url': url_for('static', filename='img/binary-logo.png'),
             'stars': 2,
             'languages': {
@@ -110,7 +129,7 @@ def problems():
         },
         {
             'title': 'IntegerToRoman',
-            'problem': 'Dada un entero, convierte el número en su representación en números romanos. Los números romanos utilizan combinaciones de letras como I, V, X, L, C, D y M para representar valores. \n\n Entrada: num (Un entero entre 1 y 3999). \n\n Salida: string: La representación en números romanos del entero proporcionado.',
+            'problem': '<b>OBJETIVO:</b> \n\n Dada un entero, convierte el número en su representación en números romanos. Los números romanos utilizan combinaciones de letras como I, V, X, L, C, D y M para representar valores. \n\n <b>Entrada:</b>: num (Un entero entre 1 y 3999). \n\n <b>Salida:</b>: string: La representación en números romanos del entero proporcionado. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: \"56\" \n\n <b>Salida:</b> = LVI \n\n <b>Explicacion:</b> = El número 56 se representa como LVI en números romanos, donde L es 50, V es 5 e I es 1. Por lo tanto, 50 + 5 + 1 = 56. ',
             'image_url': url_for('static', filename='img/integerToRoman-logo.png'),
             'stars': 3,
             'languages': {
@@ -120,7 +139,7 @@ def problems():
         },
         {
             'title': 'RomanToInteger',
-            'problem': 'Dada una cadena que representa un número romano, convierte esa cadena en un entero. Los números romanos están compuestos por los siguientes caracteres: I, V, X, L, C, D y M, cada uno de los cuales tiene un valor asociado. Para algunos números romanos, se utilizan combinaciones específicas de estos caracteres para representar valores únicos. \n\n Entrada: s: str (Una cadena que representa un número romano). \n\n Salida: int: La representación entera del número romano proporcionado.',
+            'problem': '<b>OBJETIVO:</b> \n\n Dada una cadena que representa un número romano, convierte esa cadena en un entero. Los números romanos están compuestos por los siguientes caracteres: I, V, X, L, C, D y M, cada uno de los cuales tiene un valor asociado. Para algunos números romanos, se utilizan combinaciones específicas de estos caracteres para representar valores únicos. \n\n <b>Entrada:</b>: s: str (Una cadena que representa un número romano). \n\n <b>Salida:</b>: int: La representación entera del número romano proporcionado. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: \"IX\" \n\n <b>Salida:</b> = 9 \n\n <b>Explicacion:</b> = l número romano '"IX"' representa el valor 9, ya que '"I"' es 1 y '"X"' es 10, y dado que '"I"' precede a '"x"', el valor total es 10 - 1 = 9.',
             'image_url': url_for('static', filename='img/romanToInteger-logo.png'),
             'stars': 3,
             'languages': {
@@ -130,7 +149,7 @@ def problems():
         },
         {
             'title': 'MoneyToEnglish',
-            'problem': 'Dada una cantidad de dinero en formato numérico, convierte esa cantidad en su representación en inglés. Por ejemplo, 123.45 debería convertirse en "One Hundred Twenty-Three Dollars and Forty-Five Cents". \n\n Entrada: num: float (Un número que representa la cantidad de dinero). \n\n Salida: str: La representación en inglés de la cantidad de dinero proporcionada.',
+            'problem': '<b>OBJETIVO:</b> \n\n Dada una cantidad de dinero en formato numérico, convierte esa cantidad en su representación en inglés. Por ejemplo, 123.45 debería convertirse en "One Hundred Twenty-Three Dollars and Forty-Five Cents". \n\n <b>Entrada:</b>: num: float (Un número que representa la cantidad de dinero). \n\n <b>Salida:</b>: str: La representación en inglés de la cantidad de dinero proporcionada.\n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: \"10\" \n\n <b>Salida:</b> = ten \n\n <b>Explicacion:</b> = La traduccion directa de 10 en ingles es "Ten" ',
             'image_url': url_for('static', filename='img/moneyToEnglish-logo.png'),
             'stars': 4,
             'languages': {
@@ -140,11 +159,41 @@ def problems():
         },
         {
             'title': 'SpiralMatrix',
-            'problem': 'Dada una matriz en el order espiral, es decir desde la esquina superior izquierda, hacia la derecha, luego hacia abajo, luego a la izquierda y finalmente hacia arriba, repitiendo este patrón hasta recorrer toda la matriz \n\n Límites:  Tendremos cuatro "límites" que nos ayudarán a controlar la dirección en la que estamos moviéndonos. (Top, bottom, left, right) ',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo de El recorrido debe comenzar desde la esquina superior izquierda y seguir un patrón espiral, recorriendo la matriz de manera secuencial a lo largo de sus bordes y luego hacia el interior, hasta que todos los elementos hayan sido impresos. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> \n\n [[1,2,3], \n [4,5,6], \n [7,8,9]] \n\n <b>Salida:</b>: [1, 2, 3, 6, 9, 8, 7, 4, 5] ',
             'image_url': url_for('static', filename='img/matrix.png'),
             'stars': 4,
             'languages': {
-                'python': {'code': 'def SpiralMatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'python': {'code': 'def spiralmatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
+        {
+            'title': 'MedianOfTwoSortedArrays',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo es que dado dos arreglos ordenados nums1 y nums2, el objetivo es encontrar la mediana de la combinación de ambos sin fusionarlos completamente. La solución eficiente utiliza búsqueda binaria en el arreglo más pequeño para dividir ambos arreglos en dos subarreglos de tal manera que la cantidad de elementos a la izquierda de la división sea igual (o casi igual, si el total es impar). Asegurándose de que los elementos de la mitad izquierda sean menores que los de la mitad derecha, se calcula la mediana.',
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 2,
+            'languages': {
+                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
+        {
+            'title': 'LongerValidParentheses',
+            'problem': '<b>OBJETIVO:</b> \n\n Dado la cadena que contiene caracteres parentesis, el objetivo es encontrar la maxima cantidad de parentesis correctamente cerrados \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: s = = ")()())" \n\n <b>Salida:</b>: 2 \n\n Explicación: La cantidad de parentesis válida es "La subcadena de paréntesis válida más larga es "()()". <b>Ejemplo:</b> \n\n<b>Entrada:</b> nums1 = [1, 3], nums2 = [2] <br> \n\n <b>Salida:</b> 2.0 <br><br \n\n <b>Explicacion:</b>: Los dos arreglos combinados son [1, 2, 3]. La mediana es el valor en el medio, que es 2.',
+            'image_url': url_for('static', filename='img/ValidParentheses.png'),
+            'stars': 3,
+            'languages': {
+                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
+                'c#': {'code': 'x'}
+            }
+        },
+        {
+            'title': 'CountofSmallerNumbersAfterSelf',
+            'problem': '<b>OBJETIVO:</b> \n\n Este problema se refiere a contar cuántos elementos a la derecha de un número son más pequeños que ese número. La idea es iterar a través del arreglo y para cada elemento contar cuántos números a la derecha son menores que el número actual. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: nums = [5,2,6,1] \n\n <b>Salida:</b>: [2,1,1,0] \n\n <b>Explicacion:</b>: A la derecha de 5 hay 2 elementos más pequeños (2 y 1). \n\n' ,
+            'image_url': url_for('static', filename='img/matrix.png'),
+            'stars': 1,
+            'languages': {
+                'python': {'code': 'def ():\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'x'}
             }
         },

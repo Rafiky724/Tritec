@@ -1,8 +1,12 @@
+import importlib
+import sys
 from app.controllers.codes_controller import CodesController
 import requests
 
 def getResult(user_code, language, problem):
     if language == "python":
+        print(language, problem)
+        reload_module()
         return pythonProblem(user_code, problem)
     elif language == "csharp":
         return cSharpProblem(user_code, problem)
@@ -24,3 +28,10 @@ def cSharpProblem(user_code, problem):
         return response
     else:
         return {"error": "Error"}
+    
+def reload_module():
+    module_name = f"app.tests"
+    if module_name in sys.modules:
+        importlib.reload(sys.modules[module_name])
+    else:
+        importlib.import_module(module_name)

@@ -1,9 +1,8 @@
-def fizzbuzz(n):
-    if n % 3 == 0 and n % 5 == 0:
-        return "FizzBuzz"
-    elif n % 3 == 0:
-        return "Fizz"
-    elif n % 5 == 0:
-        return "Buzz"
-    else:
-        return str(n)
+def is_palindrome(word):
+    word = word.replace(" ", "").lower()
+    
+    length = len(word)
+    for i in range(length // 2):
+        if word[i] != word[length - i - 1]:
+            return False
+    return True

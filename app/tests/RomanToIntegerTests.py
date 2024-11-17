@@ -14,6 +14,14 @@ class RomanToIntegerTests:
         ]
 
     def tests(self, name):
+
+        try:
+            # Eliminar cualquier referencia anterior al módulo en sys.modules
+            if 'app.problem_solver.romantointeger' in sys.modules:
+                del sys.modules['app.problem_solver.romantointeger']
+        except Exception as e:
+            pass
+
         self.reload_module(name)
 
         resultados = []

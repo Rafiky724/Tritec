@@ -1,11 +1,8 @@
-def binary_search(arr, target):
-    left, right = 0, len(arr) - 1
-    while left <= right:
-        mid = (left + right) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1
+def is_palindrome(word):
+    word = word.replace(" ", "").lower()
+    
+    length = len(word)
+    for i in range(length // 2):
+        if word[i] != word[length - i - 1]:
+            return False
+    return True

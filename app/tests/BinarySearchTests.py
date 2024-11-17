@@ -14,6 +14,14 @@ class BinarySearchTests():
         ]
 
     def tests(self, name):
+
+        try:
+            # Eliminar cualquier referencia anterior al módulo en sys.modules
+            if 'app.problem_solver.binarysearch' in sys.modules:
+                del sys.modules['app.problem_solver.binarysearch']
+        except Exception as e:
+            pass
+
         self.reload_module(name)
 
         resultados = []
@@ -25,7 +33,7 @@ class BinarySearchTests():
                 resultado = binary_search(lista, objetivo)
                 print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
-                return []
+                return f"Error: {e}"
             resultados.append(resultado == esperado)
 
         return resultados

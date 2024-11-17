@@ -1,4 +1,4 @@
-def spiral_matrix(matrix):
+def spiralmatrix(matrix):
     if not matrix or not matrix[0]:
         return []
     
