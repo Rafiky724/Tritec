@@ -209,6 +209,51 @@ def integer_to_roman(num):
     return roman_num
 '''
 
+#C#
+
+'''
+using System.Text; 
+
+namespace TritecAPI.problem_solver
+{
+    public class IntegerToRoman
+    {
+        public string _intToRoman(int num)
+        {
+            var romanSymbols = new (int, string)[]
+            {
+                (1000, "M"),
+                (900, "CM"),
+                (500, "D"),
+                (400, "CD"),
+                (100, "C"),
+                (90, "XC"),
+                (50, "L"),
+                (40, "XL"),
+                (10, "X"),
+                (9, "IX"),
+                (5, "V"),
+                (4, "IV"),
+                (1, "I")
+            };
+
+            var result = new StringBuilder();  // Aquí se usa StringBuilder
+
+            foreach (var (value, symbol) in romanSymbols)
+            {
+                while (num >= value)
+                {
+                    result.Append(symbol);
+                    num -= value;
+                }
+            }
+
+            return result.ToString();
+        }
+    }
+}
+
+'''
 5. **Roman to Integer**
 
 #Python
@@ -239,6 +284,48 @@ def roman_to_integer(num):
         prev_value = value
     
     return total
+'''
+
+#C#
+
+'''
+using System.Collections.Generic;
+
+namespace TritecAPI.problem_solver
+{
+    public class RomanToInteger
+    {
+        public int _romanToInt(string s)
+        {
+            var romanMap = new Dictionary<char, int>
+            {
+                {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50},
+                {'C', 100}, {'D', 500}, {'M', 1000}
+            };
+
+            int result = 0;
+            int prevValue = 0;
+
+            foreach (char c in s)
+            {
+                int currValue = romanMap[c];
+                result += currValue;
+
+                if (currValue > prevValue)
+                {
+                    // Si el valor actual es mayor que el anterior (e.g., IV, IX),
+                    // restamos dos veces el valor anterior porque ya lo sumamos una vez.
+                    result -= 2 * prevValue;
+                }
+
+                prevValue = currValue;
+            }
+
+            return result;
+        }
+    }
+}
+
 '''
 
 6. **Money To English**
@@ -303,6 +390,99 @@ def money_to_english(num):
     return dollar_words
 '''
 
+#C#
+
+'''
+using System; 
+
+namespace TritecAPI.problem_solver
+{
+    public class MoneyToEnglish
+    {
+        private static readonly string[] Ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+        private static readonly string[] Tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+        private static readonly string[] Thousands = new string[] { "", "thousand", "million", "billion" };
+
+        public string ConvertToWords(decimal number)
+        {
+            if (number == 0)
+            {
+                return "zero dollars";
+            }
+
+            string numberInWords = "";
+
+            // Handling negative numbers
+            if (number < 0)
+            {
+                numberInWords = "negative ";
+                number = Math.Abs(number);  // Math.Abs() necesita el using System;
+            }
+
+            // Convert dollars (integer part)
+            long dollars = (long)number;
+            numberInWords += ConvertWholeNumber(dollars) + " dollar" + (dollars != 1 ? "s" : "");
+
+            // Convert cents (decimal part)
+            int cents = (int)((number - dollars) * 100);
+            if (cents > 0)
+            {
+                numberInWords += " and " + ConvertWholeNumber(cents) + " cent" + (cents != 1 ? "s" : "");
+            }
+
+            return numberInWords;
+        }
+
+        private string ConvertWholeNumber(long number)
+        {
+            if (number == 0)
+            {
+                return "";
+            }
+
+            string result = "";
+            int thousandIndex = 0;
+
+            while (number > 0)
+            {
+                if (number % 1000 != 0)
+                {
+                    result = ConvertHundreds(number % 1000) + (Thousands[thousandIndex] != "" ? " " + Thousands[thousandIndex] : "") + " " + result;
+                }
+                number /= 1000;
+                thousandIndex++;
+            }
+
+            return result.Trim();
+        }
+
+        private string ConvertHundreds(long number)
+        {
+            string result = "";
+
+            if (number >= 100)
+            {
+                result += Ones[number / 100] + " hundred ";
+                number %= 100;
+            }
+
+            if (number >= 20)
+            {
+                result += Tens[number / 10] + " ";
+                number %= 10;
+            }
+
+            if (number > 0)
+            {
+                result += Ones[number] + " ";
+            }
+
+            return result.Trim();
+        }
+    }
+}
+
+'''
 7. **Spiral Matrix**
 
 #Python
@@ -338,9 +518,69 @@ def spiralmatrix(matrix):
     return result
 
 '''
+#C#
 
+'''
+using System;
+using System.Collections.Generic;
 
+namespace TritecAPI.problem_solver
+{
+    public class SpiralMatrix
+    {
+        public List<int> SpiralOrder(int[][] matrix)
+        {
+            var result = new List<int>();
+            if (matrix == null || matrix.Length == 0) return result;
+
+            int top = 0, bottom = matrix.Length - 1;
+            int left = 0, right = matrix[0].Length - 1;
+
+            while (top <= bottom && left <= right)
+            {
+                // Recorrer de izquierda a derecha
+                for (int i = left; i <= right; i++)
+                {
+                    result.Add(matrix[top][i]);
+                }
+                top++;
+
+                // Recorrer de arriba hacia abajo
+                for (int i = top; i <= bottom; i++)
+                {
+                    result.Add(matrix[i][right]);
+                }
+                right--;
+
+                if (top <= bottom)
+                {
+                    // Recorrer de derecha a izquierda
+                    for (int i = right; i >= left; i--)
+                    {
+                        result.Add(matrix[bottom][i]);
+                    }
+                    bottom--;
+                }
+
+                if (left <= right)
+                {
+                    // Recorrer de abajo hacia arriba
+                    for (int i = bottom; i >= top; i--)
+                    {
+                        result.Add(matrix[i][left]);
+                    }
+                    left++;
+                }
+            }
+
+            return result;
+        }
+    }
+}
+'''
 8. **Median Of Two Sorted Arrays**
+
+#Python
 
 '''
 def median_of_two_sorted_arrays(array1, array2):
@@ -354,9 +594,17 @@ def median_of_two_sorted_arrays(array1, array2):
         mediana = (sorted_array[tamanio // 2 - 1] + sorted_array[tamanio // 2]) / 2.0 
     return mediana
 '''
+# C$
+
+'''
+
+
+'''
 
 9. **Longer Valid Parentheses**
 
+
+#Python
 '''
 def longer_valid_parentheses(s):
     stack = []  
@@ -373,8 +621,56 @@ def longer_valid_parentheses(s):
     return count  
 '''
 
+# C#
+
+'''
+using System;
+using System.Collections.Generic;
+
+namespace TritecAPI.problem_solver
+{
+    public class LongerValidParentheses
+    {
+        public int LongestValidParentheses(string s)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(-1); 
+            int maxLength = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '(')
+                {
+                    stack.Push(i); 
+                }
+                else
+                {
+                    stack.Pop();
+
+                    // Verificamos si hay un paréntesis de apertura válido para el cierre
+                    if (stack.Count > 0)
+                    {
+                        maxLength = Math.Max(maxLength, i - stack.Peek()); // Calculamos el largo de la subsecuencia válida
+                    }
+                    else
+                    {
+                        stack.Push(i); // Si la pila está vacía, guardamos la posición del paréntesis de cierre
+                    }
+                }
+            }
+
+            return maxLength;
+        }
+    }
+}
+
+'''
+
+
 10. **Count Of Smaller Numbers After Self**
 
+
+#Python
 '''
 
 def count_Smaller(nums):
@@ -390,5 +686,77 @@ def count_Smaller(nums):
                 counts[i] += 1
         
     return counts
+
+'''
+
+# C#
+
+'''
+using System;
+using System.Collections.Generic;
+
+namespace TritecAPI.problem_solver
+{
+    public class CountofSmallerNumbersAfterSelf
+    {
+        public int[] CountSmaller(int[] nums)
+        {
+            int n = nums.Length;
+            int[] result = new int[n];
+            if (n == 0)
+                return result;
+
+            // Usamos un árbol de búsqueda balanceado para contar los elementos menores
+            List<int> sortedList = new List<int>();
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                int index = BinarySearch(sortedList, nums[i]);
+                result[i] = index;
+                InsertInSortedList(sortedList, nums[i]);
+            }
+
+            return result;
+        }
+
+        // Método para insertar un número en la lista ordenada
+        private void InsertInSortedList(List<int> list, int num)
+        {
+            int low = 0, high = list.Count;
+            while (low < high)
+            {
+                int mid = (low + high) / 2;
+                if (list[mid] < num)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid;
+                }
+            }
+            list.Insert(low, num);
+        }
+
+        // Método para realizar una búsqueda binaria
+        private int BinarySearch(List<int> list, int target)
+        {
+            int low = 0, high = list.Count;
+            while (low < high)
+            {
+                int mid = (low + high) / 2;
+                if (list[mid] < target)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid;
+                }
+            }
+            return low;
+        }
+    }
+}
 
 '''
