@@ -1,7 +1,11 @@
 {% for index, card in cards %}
 <div class="total-container flex items-center">
   <div class="mt-2">
+    {% if card.status %}
+    <div class="excercises-color2 mb-2 p-2 pr-4 flex items-center">
+    {% else %}
     <div class="excercises-color mb-2 p-2 pr-4 flex items-center">
+    {% endif %}
       <div class="flex justify-center items-center">
         <img class="image-home" src="{{ card.image_url }}" alt="{{card.title}}" />
       </div>
@@ -12,6 +16,14 @@
         <div class="content-excercise">
           <p>{{card.description}}</p>
         </div>
+        <!--
+        <div class="status-excercise">
+          {% if card.status %}
+            <p class="status-text">Correcto</p>
+          {% else %}
+            <p class="status-text">Incorrecto</p>
+          {% endif %}
+        </div>-->
       </div>
       <div class="stars flex column">
         {% for _ in range(card.stars) %} 

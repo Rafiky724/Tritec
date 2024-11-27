@@ -1,0 +1,27 @@
+{% extends 'baseProblem.html' %} 
+
+{% block title %}Códigos enviados{% endblock %}
+
+{%block content %}
+
+    <div class="col-4-mid" style="z-index: 10;">
+    {% for code in codes %}
+        
+    
+        <textarea name="code">
+{{ code['code'] }}
+        </textarea>
+    
+        <div>
+            
+            {% for test in code['tests'] %}
+                <p>{{ test }}</p>
+            {% endfor %}
+        </div>
+
+        <p>{{ code['problem'] }}</p>
+
+    {% endfor %}
+    </div>
+
+{% endblock %}

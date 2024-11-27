@@ -49,6 +49,9 @@
             <div class="test-block font-bold">
                 <h4>Pruebas</h4>
             </div>
+            <a href="{{ url_for('bp.submits', value=value) }}">
+                <h4 >Historial</h4>
+            </a>
         </div>
     </div>
     <!-- 4 -->
@@ -84,10 +87,20 @@
                     {% endfor %} 
                 </div>
             </div>
-            <div id="runCode" class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
-                <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}" alt="arrowBlack">
-                <button class="mr-1">Run Code</button>
+            <div>
+
+                <div id="runCode" class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
+                    <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}" alt="arrowBlack">
+                    <button class="mr-1">Run Code</button>
+                </div>
+                <div id="submitCode" data-problem-id="{{ problem.id }}" class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
+    
+                    <button class="mr-1">Submit Code</button>
+    
+                </div>
+
             </div>
+            
         </div>
         
         

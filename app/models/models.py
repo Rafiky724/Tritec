@@ -4,6 +4,7 @@ from .connection import db
 import uuid
 
 userDB = db['users']
+codesDB = db['codes']
 
 class User:
 
@@ -50,3 +51,43 @@ class User:
             return redirect(url_for('bp.home'))
         
         return jsonify({"message": "Correo electrónico o contraseña incorrectos"}), 401
+    
+    def update_exercise(self, value):
+
+        try:
+            update_query = {f"exercise.{value}": True}
+            result = userDB.update_one(
+                {"_id": session['user']['_id']},
+                {"$set": update_query}
+            )
+            if result.matched_count > 0:
+                user = userDB.find_one({'_id': session['user']['_id']})
+                self.start_session(user)
+                print(f"Documento actualizado exitosamente. Índice {value} ahora tiene el valor {True}.")
+            else:
+                print("No se encontró el documento.")
+
+        except Exception as e:
+            print(f"Error al conectar o actualizar: {e}")
+
+
+class Codes():
+
+    def submit_code(self, data):
+        codeData = {
+
+            '_userId': session['user']['_id'],
+            'code': data['code'],
+            'tests': data['test'],
+            'idExercise': data['id'],
+            'problem': data['problem']
+        }
+        if codesDB.insert_one(codeData):
+            print("Success")
+        else:
+            print("Failed")
+    
+    def get_codes(self, index):
+
+        codes = list(codesDB.find({'_userId': session['user']['_id'], 'idExercise': str(index-1)}))
+        return codes

@@ -52,7 +52,7 @@ nav ul li a {
 }
 
 .card-color {
-  background-color: #13678a;
+  background-color: #012E40;
 }
 
 .long-card {
@@ -60,7 +60,14 @@ nav ul li a {
 }
 
 .excercises-color {
-  background-color: #38a5c6;
+  background-color: #041626;
+  border-radius: 15px;
+  gap: 20px;
+}
+
+.excercises-color2 {
+  background-color: #0BAD6F;
+  /*background-color: #0BAD6F;*/
   border-radius: 15px;
   gap: 20px;
 }

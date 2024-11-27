@@ -33,7 +33,7 @@ function selectLanguaje(language) {
 
 }
 
-let buttonRunCode = document.getElementById('runCode').addEventListener('click', () => {
+let buttonRunCode = document.getElementById('submitCode').addEventListener('click', () => {
   let languageDisplay = document.querySelector("#language");
   let language;
 
@@ -119,6 +119,7 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 
         setTimeout(function() {
           alert('Felicidades. Tu código ha pasado todas las pruebas.');
+          submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
         }, 500); 
 
       }else{
@@ -140,3 +141,82 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 
 })
 
+
+
+function submitCode(code, lang, problem, test, id, value){
+
+  const Data = {
+
+    code: code,
+    language: lang,
+    problem: problem,
+    test: test,
+    id: id,
+    value: value
+
+  }
+
+  fetch('http://127.0.0.1:5000/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'  // Indicar que se está enviando JSON
+    },
+    body: JSON.stringify(Data)  // Convertir los datos a JSON
+  })
+    .then(response => response.json())  // Convertir la respuesta a JSON
+    .then(data => {
+      console.log(data);  // Manejar la respuesta de Flask
+    })
+    .catch(error => {
+      console.error('Error:', error);  // Manejar errores
+    });
+
+}
+
+/*
+let buttonSubmit = document.getElementsById('submitCode').addEventListener('click', () => {
+
+  let languageDisplay = document.querySelector("#language");
+  let language;
+
+  if (languageDisplay.textContent === "Python") {
+
+    language = "python";
+
+  } else if(languageDisplay.textContent === "Java") {
+
+    language = "java";
+
+  }else{
+
+    language = "csharp";
+
+  }
+
+  let problem = document.querySelector('#problemTitle').textContent.trim();
+
+  const data = {
+    code: editor.getValue(),
+    language: language,
+    problem: problem
+  };
+
+  fetch('http://127.0.0.1:5000/enviar', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Éxito:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      setTimeout(function() {
+        alert('ERROR: Al enviar el código"');
+      }, 500); 
+    });
+
+})*/
