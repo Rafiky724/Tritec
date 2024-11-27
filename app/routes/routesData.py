@@ -1,4 +1,6 @@
-from flask import Blueprint, jsonify, render_template, request, url_for
+from flask import Blueprint, jsonify, render_template, request, url_for, session
+from ..models.models import User
+from functools import wraps
 try:
     from migrate.db import getResult
 except ImportError as e:
@@ -6,7 +8,17 @@ except ImportError as e:
     
 bp = Blueprint('bp', __name__)
 
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return render_template('login.html')
+    return wrap
+
 @bp.route('/enviar', methods=['POST'])
+@login_required
 def send_code():
 
     data = request.get_json()
@@ -21,6 +33,7 @@ def send_code():
     return jsonify({"message": resultado}), 201   
 
 @bp.route('/')
+@login_required
 def home():
     cards = [
         {},
@@ -90,6 +103,7 @@ def home():
     return render_template('index.html', cards=enumerate(cards))
 
 @bp.route('/problems')
+@login_required
 def problems():
     value = request.args.get('value', default=None, type=int)
     language = request.args.get('language', default='python')
@@ -224,10 +238,22 @@ def problems():
 
     return render_template('problems.html', problem=problem)
 
-@bp.route('/login')
-def login():    
-    return render_template('login.html')
+@bp.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return User().login()
+    else:
+        return render_template('login.html')
+    
+@bp.route('/register', methods=['GET', 'POST'])
+def register():
 
-@bp.route('/register')
-def register():    
+    if request.method == 'POST':
+        user = User()
+        return user.register()
+
     return render_template('register.html')
+
+@bp.route('/signout', methods=['GET'])
+def signout():
+    return User().signout()

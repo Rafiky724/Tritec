@@ -37,7 +37,7 @@
             Llena la siguiente información para continuar
           </p>
 
-          <form>
+          <form action="/login" method="POST">
             <div class="mb-4">
               <label for="email" class="block text-sm font-medium text-white"
                 >Correo electrónico</label
@@ -45,7 +45,8 @@
               <input
                 type="email"
                 id="email"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                name="email"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
                 placeholder="Ingresa el correo"
                 required
               />
@@ -57,7 +58,8 @@
               <input
                 type="password"
                 id="password"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                name="password"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
                 placeholder="Ingresa tu contraseña"
                 required
               />

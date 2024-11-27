@@ -40,7 +40,7 @@
             Llena la siguiente información para continuar
           </p>
 
-          <form>
+          <form action="/register" method="POST">
             <div class="mb-4">
               <label for="name" class="block text-sm font-medium text-white"
                 >Nombre de Usuario</label
@@ -48,7 +48,8 @@
               <input
                 type="text"
                 id="name"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                name="username"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
                 placeholder="Ingresa el nombre de usuario"
                 required
               />
@@ -60,7 +61,8 @@
               <input
                 type="email"
                 id="email"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                name="email"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
                 placeholder="Ingresa tu correo electrónico"
                 required
               />
@@ -72,7 +74,8 @@
               <input
                 type="password"
                 id="password"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                name="password"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
                 placeholder="Ingresa tu contraseña"
                 required
               />
@@ -84,7 +87,7 @@
               <input
                 type="password"
                 id="Confirmpassword"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full mb-2"
+                class="mt-1 p-2 border border-gray-300 rounded-md w-full mb-2 inputs-form"
                 placeholder="Confirma tu contraseña"
                 required
               />
