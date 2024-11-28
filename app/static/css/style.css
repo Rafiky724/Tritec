@@ -322,6 +322,15 @@ nav ul li a {
   background-color: #D5F4F7;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+}
+
 @media screen and (min-height: 800px) {
   .col-2-mid {
     min-height: 700px !important;

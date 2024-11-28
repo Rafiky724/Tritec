@@ -83,6 +83,10 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 })
 
 function evaluateCode(aux) {
+
+  const container = document.querySelector('#containerTest');
+  container.innerHTML = '';
+
   let languageDisplay = document.querySelector("#language");
   let language;
 
@@ -173,12 +177,13 @@ function evaluateCode(aux) {
       }
       if (language == 'python') {
 
-        if (dataBools.length == 1) {
+        console.log(typeof dataBools);
+        if (typeof dataBools === 'string') {
 
           isSubmitEnabled = false;
           let botonSubmit = document.getElementById("submitCode");
           botonSubmit.classList.add('disabledButton');
-          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
           //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
           //showTests(dataBools, problem, language, aux);
         } else {
@@ -211,25 +216,31 @@ function showTests(dataBools, problem, language, aux) {
 
   let numberTest = 1;
 
-  dataBools.forEach(result => {
+  dataBools.forEach((result, index) => {
 
     const ul = document.createElement('ul');
-
+  
     const li = document.createElement('li');
-    li.className = 'flex tests mb-2 p-3 rounded-lg justify-between items-center';
-
+    li.className = 'flex tests mb-2 p-3 rounded-lg justify-between items-center fade-in';  // Añadimos la clase fade-in
+  
     const img = document.createElement('img');
     img.alt = result ? 'Resultado Bueno' : 'Resultado Malo';
     img.src = result ? './static/img/good.png' : './static/img/bad.png';
-
+  
     let textTest = document.createTextNode("Prueba " + numberTest.toString());
-
+  
     li.appendChild(textTest);
     li.appendChild(img);
-
+  
     ul.appendChild(li);
-
+  
     container.appendChild(ul);
+  
+    // Usamos setTimeout para añadir la clase "fade-in-visible" con un retraso basado en el índice
+    setTimeout(() => {
+      li.classList.add('fade-in-visible');
+    }, index * 200); // 500 ms de retraso entre cada elemento
+  
     numberTest++;
   });
 
