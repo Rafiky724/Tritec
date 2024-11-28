@@ -1,37 +1,43 @@
 // Esperamos que el DOM esté completamente cargado antes de ejecutar el código
-document.addEventListener("DOMContentLoaded", function() {
-  var textareas = document.querySelectorAll("textarea[id='code']"); 
+document.addEventListener("DOMContentLoaded", function () {
+  var textareas = document.querySelectorAll('textarea.codeTextArea');
 
-  textareas.forEach(function(textarea) {
+  textareas.forEach(function (textarea) {
+
+    if (textarea.id !== 'code') {
+
       var editor = CodeMirror.fromTextArea(textarea, {
-          mode: "python",
-          lineNumbers: true,
-          theme: "dracula",
-          tabSize: 4,
-          indentUnit: 4,
-          lineWrapping: true,
+        mode: "python",
+        lineNumbers: true,
+        theme: "dracula",
+        tabSize: 4,
+        indentUnit: 4,
+        lineWrapping: true,
       });
+
+    }
+
   });
 });
 
 function updateTerminal(language) {
-var editors = document.querySelectorAll('.CodeMirror'); 
-editors.forEach(function(editorElement) {
-  var editor = editorElement.CodeMirror; 
-  editor.setOption("mode", language.toLowerCase());
-});
-console.log(editors);
+  var editors = document.querySelectorAll('.CodeMirror');
+  editors.forEach(function (editorElement) {
+    var editor = editorElement.CodeMirror;
+    editor.setOption("mode", language.toLowerCase());
+  });
+  console.log(editors);
 }
 
-// var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-//   mode: "python",
-//   lineNumbers: true,
-//   theme: "dracula",
-//   tabSize: 4,
-//   indentUnit: 4,
-//   lineWrapping: true,
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+  mode: "python",
+  lineNumbers: true,
+  theme: "dracula",
+  tabSize: 4,
+  indentUnit: 4,
+  lineWrapping: true,
 
-// });
+});
 
 // function updateTerminal(language) {
 //   editor.setOption("mode", language.toLowerCase());
@@ -109,7 +115,16 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
         let boolArrayStr = dataBools.split(",");
 
         dataBools = boolArrayStr.map(str => str.trim() === 'true');*/
-        showTests(dataBools, problem, language);
+
+        console.log(dataBools);
+
+        if(typeof(dataBools) === 'string') {
+
+          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+
+        }else{
+          showTests(dataBools, problem, language);
+        }
 
       }
 
@@ -119,27 +134,27 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
 
-        }else{
+        } else {
 
           showTests(dataBools, problem, language);
 
         }
 
       }
-      if (language == 'python'){
-        
-        if (dataBools.length == 1){
+      if (language == 'python') {
+
+        if (dataBools.length == 1) {
 
           //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
           showTests(dataBools, problem, language);
-        }else{
+        } else {
 
           showTests(dataBools, problem, language);
 
         }
 
       }
-      
+
     })
     .catch((error) => {
       console.error('Error:', error);

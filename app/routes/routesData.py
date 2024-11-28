@@ -296,5 +296,5 @@ def submits():
     value = request.args.get('value', default=None, type=int)
     
     codes = list(Codes().get_codes(value))
-    print(codes)
+    #print(codes)
     return render_template('codesSubmits.html', value=value, codes=codes)
