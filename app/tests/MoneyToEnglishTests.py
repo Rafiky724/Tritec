@@ -38,10 +38,10 @@ class MoneyToEnglishTests:
                 print(e)
                 resultados.append(False)
             except Exception as e:
-                print(f"Error: {e}")
-                resultados.append(False)
+                #print(f"Error: {e}")
+                return f"Error: {e}"
             else:
-                print(f"Prueba exitosa: {entrada} -> {resultado}")
+                #print(f"Prueba exitosa: {entrada} -> {resultado}")
                 resultados.append(True)
 
         return resultados

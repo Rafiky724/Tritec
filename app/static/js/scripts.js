@@ -41,11 +41,11 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
     language = "python";
 
-  } else if(languageDisplay.textContent === "Java") {
+  } else if (languageDisplay.textContent === "Java") {
 
     language = "java";
 
-  }else{
+  } else {
 
     language = "csharp";
 
@@ -74,76 +74,105 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
         dataBools = data['message'];
       } catch (error) {
         console.log('Error:', error);
-        alert("ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+        alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
-      
-      if (language == 'csharp'){
 
+      if (language == 'csharp') {
+        /*
         dataBools = dataBools.slice(1, -1);
         console.log(dataBools);
-        let boolArrayStr = dataBools.split(","); 
+        let boolArrayStr = dataBools.split(",");
 
-        dataBools = boolArrayStr.map(str => str.trim() === 'true');
-
-      }
-      
-      const container = document.querySelector('#containerTest');
-
-      container.innerHTML = '';
-
-      let numberTest = 1;
-
-      dataBools.forEach(result => {
-  
-        const ul = document.createElement('ul');
-      
-        const li = document.createElement('li');
-        li.className = 'flex tests mb-2 p-3 rounded-lg justify-between items-center';
-        
-        const img = document.createElement('img');
-        img.alt = result ? 'Resultado Bueno' : 'Resultado Malo';
-        img.src = result ? './static/img/good.png' : './static/img/bad.png'; 
-        
-        let textTest = document.createTextNode("Prueba "+numberTest.toString());
-        
-        li.appendChild(textTest);
-        li.appendChild(img);
-
-        ul.appendChild(li);
-
-        container.appendChild(ul);
-        numberTest++;
-      });
-
-      if (dataBools.every(elemnt => elemnt === true)){
-
-        setTimeout(function() {
-          alert('Felicidades. Tu código ha pasado todas las pruebas.');
-          submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
-        }, 500); 
-
-      }else{
-
-        setTimeout(function() {
-          alert('Error. Tu código no ha pasado todas las pruebas.');
-        }, 500); 
+        dataBools = boolArrayStr.map(str => str.trim() === 'true');*/
+        showTests(dataBools, problem, language);
 
       }
 
+      if (language == 'java') {
+
+        if (dataBools.length == 2) {
+
+          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+
+        }else{
+
+          showTests(dataBools, problem, language);
+
+        }
+
+      }
+      if (language == 'python'){
+        
+        if (dataBools.length == 1){
+
+          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          showTests(dataBools, problem, language);
+        }else{
+
+          showTests(dataBools, problem, language);
+
+        }
+
+      }
+      
     })
     .catch((error) => {
       console.error('Error:', error);
-      setTimeout(function() {
-        alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código."');
-      }, 500); 
+      setTimeout(function () {
+        alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
+      }, 500);
     });
-
 
 })
 
+function showTests(dataBools, problem, language) {
 
+  const container = document.querySelector('#containerTest');
 
-function submitCode(code, lang, problem, test, id, value){
+  container.innerHTML = '';
+
+  let numberTest = 1;
+
+  dataBools.forEach(result => {
+
+    const ul = document.createElement('ul');
+
+    const li = document.createElement('li');
+    li.className = 'flex tests mb-2 p-3 rounded-lg justify-between items-center';
+
+    const img = document.createElement('img');
+    img.alt = result ? 'Resultado Bueno' : 'Resultado Malo';
+    img.src = result ? './static/img/good.png' : './static/img/bad.png';
+
+    let textTest = document.createTextNode("Prueba " + numberTest.toString());
+
+    li.appendChild(textTest);
+    li.appendChild(img);
+
+    ul.appendChild(li);
+
+    container.appendChild(ul);
+    numberTest++;
+  });
+
+  if (dataBools.every(elemnt => elemnt === true)) {
+
+    setTimeout(function () {
+      alert('Felicidades. Tu código ha pasado todas las pruebas.');
+      submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
+    }, 500);
+
+  } else {
+
+    setTimeout(function () {
+      alert('Error. Tu código no ha pasado todas las pruebas.');
+    }, 500);
+
+  }
+
+}
+
+function submitCode(code, lang, problem, test, id, value) {
 
   const Data = {
 

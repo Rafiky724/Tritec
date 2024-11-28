@@ -27,7 +27,13 @@ def cSharpProblem(user_code, problem):
     response = requests.post(url, json=data, verify=False)
 
     if response.status_code == 200:
-        return response
+        response_data = response.json()
+        resultado = response_data.get('resultado')
+        errores = response_data.get('errores')
+        if errores == None:
+            return resultado
+        else:
+            return errores
     else:
         return {"error": "Error"}
 

@@ -27,8 +27,9 @@ def send_code():
     language = data.get('language')
     problem = data.get('problem')
     resultado = getResult(code_user, language, problem)
+    """
     if(language == "csharp"):
-        resultado = resultado.text
+        resultado = resultado.text"""
 
     return jsonify({"message": resultado}), 201   
 
