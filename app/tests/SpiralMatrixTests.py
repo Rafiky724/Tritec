@@ -18,7 +18,6 @@ class SpiralMatrixTest():
     def tests(self, name):
 
         try:
-            # Eliminar cualquier referencia anterior al módulo en sys.modules
             if 'app.problem_solver.spiralmatrix' in sys.modules:
                 del sys.modules['app.problem_solver.spiralmatrix']
         except Exception as e:
@@ -31,7 +30,6 @@ class SpiralMatrixTest():
             try:
                 from app.problem_solver.spiralmatrix import spiralmatrix
                 resultado = spiralmatrix(entrada)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

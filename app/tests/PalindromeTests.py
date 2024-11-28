@@ -4,7 +4,6 @@ import sys
 class PalindromeTests():
 
     def __init__(self) -> None:
-        # Tests: (entrada, resultado esperado)
         self._tests = [
             ("racecar", True),
             ("level", True),
@@ -16,7 +15,6 @@ class PalindromeTests():
     def tests(self, name):
 
         try:
-            # Eliminar cualquier referencia anterior al módulo en sys.modules
             if 'app.problem_solver.palindrome' in sys.modules:
                 del sys.modules['app.problem_solver.palindrome']
         except Exception as e:
@@ -31,7 +29,6 @@ class PalindromeTests():
             try:
                 from app.problem_solver.palindrome import is_palindrome
                 resultado = is_palindrome(palabra)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

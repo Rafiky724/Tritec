@@ -20,7 +20,6 @@ class MoneyToEnglishTests:
     def tests(self, name):
 
         try:
-            # Eliminar cualquier referencia anterior al módulo en sys.modules
             if 'app.problem_solver.moneytoenglish' in sys.modules:
                 del sys.modules['app.problem_solver.moneytoenglish']
         except Exception as e:
@@ -35,13 +34,10 @@ class MoneyToEnglishTests:
                 resultado = money_to_english(entrada)
                 assert resultado == esperado, f"Resultado: {resultado}, esperado: {esperado}"
             except AssertionError as e:
-                print(e)
                 resultados.append(False)
             except Exception as e:
-                #print(f"Error: {e}")
                 return f"Error: {e}"
             else:
-                #print(f"Prueba exitosa: {entrada} -> {resultado}")
                 resultados.append(True)
 
         return resultados
