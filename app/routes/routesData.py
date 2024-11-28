@@ -203,7 +203,7 @@ def problems():
             'stars': 4,
             'languages': {
                 'python': {'code': 'def spiralmatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class SpiralMatrix \n    {\n        public string _romanToInt(string s){\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class SpiralMatrix \n    {\n        public List<int> SpiralOrder(int[][] matrix)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
                 'java': {"code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class SpiralMatrix {\n    public static List<Integer> spiralMatrix(int[][] matrix) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
