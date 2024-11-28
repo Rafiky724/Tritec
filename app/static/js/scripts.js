@@ -64,7 +64,20 @@ function selectLanguaje(language) {
 
 }
 
-let buttonRunCode = document.getElementById('submitCode').addEventListener('click', () => {
+let buttonSubmitCode = document.getElementById('submitCode').addEventListener('click', () => {
+
+  evaluateCode(true);
+
+})
+
+let buttonRunCode = document.getElementById('runCode').addEventListener('click', () => {
+
+  evaluateCode(false);
+
+})
+
+function evaluateCode(aux) {
+
   let languageDisplay = document.querySelector("#language");
   let language;
 
@@ -118,12 +131,12 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
         console.log(dataBools);
 
-        if(typeof(dataBools) === 'string') {
+        if (typeof (dataBools) === 'string') {
 
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
 
-        }else{
-          showTests(dataBools, problem, language);
+        } else {
+          showTests(dataBools, problem, language, aux);
         }
 
       }
@@ -136,7 +149,7 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
         } else {
 
-          showTests(dataBools, problem, language);
+          showTests(dataBools, problem, language, aux);
 
         }
 
@@ -146,10 +159,10 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
         if (dataBools.length == 1) {
 
           //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
-          showTests(dataBools, problem, language);
+          showTests(dataBools, problem, language, aux);
         } else {
 
-          showTests(dataBools, problem, language);
+          showTests(dataBools, problem, language, aux);
 
         }
 
@@ -163,9 +176,10 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
       }, 500);
     });
 
-})
+}
 
-function showTests(dataBools, problem, language) {
+
+function showTests(dataBools, problem, language, aux) {
 
   const container = document.querySelector('#containerTest');
 
@@ -199,7 +213,17 @@ function showTests(dataBools, problem, language) {
 
     setTimeout(function () {
       alert('Felicidades. Tu código ha pasado todas las pruebas.');
-      submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
+
+      if(aux){
+
+        submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
+
+      }else{
+
+        
+
+      }
+      
     }, 500);
 
   } else {
