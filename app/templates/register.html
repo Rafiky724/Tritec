@@ -1,107 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/register.css') }}"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="p-2 navbar-color">
-      <ul class="flex space-x-4 items-center justify-between ml-2 mr-2">
-        <li>
-          <a href="{{ url_for('bp.home') }}">
-            <img
-              src="{{ url_for('static', filename='img/logo.png') }}"
-              alt="logo"
-              class="logo"
-            />
-          </a>
-        </li>
-      </ul>
 
-      <div class="flex items-center justify-center tarjet">
-        <div
-          class="color-card rounded-lg shadow-lg p-8 text-white"
-          style="width: 450px"
-        >
-          <h2 class="text-2xl font-bold mb-1">Registrarse</h2>
-          <p class="text-gray-600 mb-6 text-white">
-            Llena la siguiente información para continuar
-          </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet" />
+</head>
 
-          <form action="/register" method="POST">
-            <div class="mb-4">
-              <label for="name" class="block text-sm font-medium text-white"
-                >Nombre de Usuario</label
-              >
-              <input
-                type="text"
-                id="name"
-                name="username"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
-                placeholder="Ingresa el nombre de usuario"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <label for="email" class="block text-sm font-medium text-white"
-                >Correo electrónico</label
-              >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
-                placeholder="Ingresa tu correo electrónico"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <label for="password" class="block text-sm font-medium text-white"
-                >Contraseña</label
-              >
-              <input
-                type="password"
-                id="password"
-                name="password"
-                class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
-                placeholder="Ingresa tu contraseña"
-                required
-              />
-            </div>
+<body>
+  <div class="p-2 navbar-color">
+    <ul class="flex space-x-4 items-center justify-between ml-2 mr-2">
+      <li>
+        <a href="{{ url_for('bp.home') }}">
+          <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="logo" />
+        </a>
+      </li>
+    </ul>
 
-            <div class="flex justify-center gap-5">
-              <a href="{{ url_for('bp.login') }}">
-                <div
-                  type="submit"
-                  class="text-black font-bold py-2 p-4"
-                  style="background-color: #d5f4f7; border-radius: 30px;"
-                >
-                  Cancelar
-                </div>
-              </a>
-              <button
-                type="submit"
-                class="text-black font-bold py-2 p-4"
-                style="background-color: #07d78c; border-radius: 30px;"
-              >
-                Registrarse
-              </button>
-            </div>
-          </form>
-        </div>
+    <div class="flex items-center justify-center tarjet">
+      <div class="color-card rounded-lg shadow-lg p-8 text-white" style="width: 450px">
+        <h2 class="text-2xl font-bold mb-1">Registrarse</h2>
+        <p class="text-gray-600 mb-6 text-white">
+          Llena la siguiente información para continuar
+        </p>
+
+        <form action="/register" method="POST">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-white">Nombre de Usuario</label>
+            <input type="text" id="name" name="username"
+              class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
+              placeholder="Ingresa el nombre de usuario" required />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-white">Correo electrónico</label>
+            <input type="email" id="email" name="email"
+              class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form"
+              placeholder="Ingresa tu correo electrónico" required />
+          </div>
+          <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-white">Contraseña</label>
+            <input type="password" id="password" name="password"
+              class="mt-1 p-2 border border-gray-300 rounded-md w-full inputs-form" placeholder="Ingresa tu contraseña"
+              required />
+          </div>
+
+          {% if request.args.get('error') == 'email_taken' %}
+          <p style="color: red; padding-bottom: 12px;">El correo electrónico ya está en uso.</p>
+          {% elif request.args.get('error') == 'registration_failed' %}
+          <p style="color: red; padding-bottom: 12px;">El registro falló. Por favor, intenta nuevamente.</p>
+          {% endif %}
+
+          <div class="flex justify-center gap-5">
+            <a href="{{ url_for('bp.login') }}">
+              <div type="submit" class="text-black font-bold py-2 p-4"
+                style="background-color: #d5f4f7; border-radius: 30px;">
+                Cancelar
+              </div>
+            </a>
+            <button type="submit" class="text-black font-bold py-2 p-4"
+              style="background-color: #07d78c; border-radius: 30px;">
+              Registrarse
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

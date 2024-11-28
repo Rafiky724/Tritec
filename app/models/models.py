@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 from passlib.hash import pbkdf2_sha256
 from .connection import db
@@ -29,7 +30,7 @@ class User:
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
         if userDB.find_one({'email': user['email']}):
-            return jsonify({"message": "El correo electrónico ya está en uso"}), 400
+            return redirect(url_for('bp.register', error="email_taken"))
 
         if userDB.insert_one(user):
             
@@ -37,7 +38,7 @@ class User:
             return render_template('login.html')
             #return jsonify(user), 200
         
-        return jsonify({"error": "El registro falló"}), 400
+        return redirect(url_for('bp.register', error="registration_failed"))
     
     def signout(self):
         session.clear()
@@ -50,7 +51,7 @@ class User:
             self.start_session(user)
             return redirect(url_for('bp.home'))
         
-        return jsonify({"message": "Correo electrónico o contraseña incorrectos"}), 401
+        return redirect(url_for('bp.login', error="invalid_credentials"))
     
     def update_exercise(self, value):
 
@@ -78,6 +79,11 @@ class User:
 class Codes():
 
     def submit_code(self, data):
+
+        current_datetime = datetime.now()
+        date = current_datetime.strftime('%Y-%m-%d')
+        time = current_datetime.strftime('%H:%M:%S')
+
         codeData = {
 
             '_userId': session['user']['_id'],
@@ -85,7 +91,9 @@ class Codes():
             'tests': data['test'],
             'idExercise': data['id'],
             'problem': data['problem'],
-            'language': data['language']
+            'language': data['language'],
+            'date': date,
+            'time': time
         }
         if codesDB.insert_one(codeData):
             print("Success")
@@ -95,5 +103,4 @@ class Codes():
     def get_codes(self, index):
 
         codes = list(codesDB.find({'_userId': session['user']['_id'], 'idExercise': str(index-1)}))
-        print(codes)
         return codes
