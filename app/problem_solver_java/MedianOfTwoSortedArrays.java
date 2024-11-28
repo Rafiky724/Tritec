@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MedianOfTwoSortedArrays {
     public static double medianOfTwoSortedArrays(int[] array1, int[] array2) {
@@ -24,4 +26,3 @@ public class MedianOfTwoSortedArrays {
         }
     }
 }
-        

@@ -1,12 +1,20 @@
-{% extends 'baseProblem.html' %} 
+{% extends 'baseProblem.html' %}
 
-{% block title %}Problemas{% endblock %} 
+{% block title %}Problemas{% endblock %}
 
 {%block content %}
 <div id="modal" class="modal" style="background-color: #D5F4F7;">
     <h4 id="titleModal">Title</h4>
     <p id="descriptionModal">Description</p>
 </div>
+<div id="loading-screen">
+
+    <div id="loading-screen2">
+        <div class="spinner"></div>
+    </div>
+
+</div>
+
 <div class="grid grid-cols-[1.5fr_3fr_1.5fr] gap-1 grid-components">
     <!-- 1 -->
     <div class="col-1 p-1 rounded-r-lg">
@@ -25,15 +33,16 @@
         </div>
     </div>
     <!-- 2 -->
-    <div class="relative flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold" id="dropdownButton" style="z-index: 100;">
+    <div class="relative flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold" id="dropdownButton"
+        style="z-index: 100;">
         {{problem.title}}.py
-        <div 
-        onclick="toggleDropdown()"
-        class="relative language p-2 flex justify-between">
+        <div onclick="toggleDropdown()" class="relative language p-2 flex justify-between">
             <h4 id="language">{{ request.args.get('language', 'python')|capitalize }}</h4>
-            <img class="arrow-button ml-2" src="{{ url_for('static', filename='img/arrowButton.png') }}" alt="arrowBotton">
+            <img class="arrow-button ml-2" src="{{ url_for('static', filename='img/arrowButton.png') }}"
+                alt="arrowBotton">
 
-            <div id="dropdown" class="rounded absolute top-[50px] w-[400px] shadow-md left-[0%] hidden" style="width: 100%; background-color: #012e40;">
+            <div id="dropdown" class="rounded absolute top-[50px] w-[400px] shadow-md left-[0%] hidden"
+                style="width: 100%; background-color: #012e40;">
                 <div class="cursor-pointer hover:bg-gray-300 p-5" onclick="selectLanguaje('python')">
                     Python
                 </div>
@@ -53,7 +62,8 @@
             <div class="test-block font-bold">
                 <h4>Pruebas</h4>
                 <a href="{{ url_for('bp.submits', value=value) }}">
-                    <img src="{{ url_for('static', filename='img/history.png') }}" alt="history" width="40px" style="margin-left: 50px;">
+                    <img src="{{ url_for('static', filename='img/history.png') }}" alt="history" width="40px"
+                        style="margin-left: 50px;">
                 </a>
             </div>
         </div>
@@ -73,7 +83,7 @@
     <!-- 6 -->
     <div class="col-2-side col-2-side-right row-span-2">
         <div id="containerTest" class="p-2">
-            
+
         </div>
     </div>
     <!-- 7 -->
@@ -82,26 +92,29 @@
             <div class="flex-col">
                 <h5 class="ml-6 mt-2">Dificultad</h5>
                 <div class="flex ml-4 starss mb-3">
-                    {% for _ in range(problem.stars) %} 
-                        {% include 'partials/star.html' %} 
-                    {%endfor %} 
+                    {% for _ in range(problem.stars) %}
+                    {% include 'partials/star.html' %}
+                    {%endfor %}
 
-                    {% for _ in range(5 - problem.stars) %} 
-                        {% include 'partials/starNull.html' %} 
-                    {% endfor %} 
+                    {% for _ in range(5 - problem.stars) %}
+                    {% include 'partials/starNull.html' %}
+                    {% endfor %}
                 </div>
             </div>
             <div class="buttonsRun">
                 <div id="runCode" class="flex runCode mr-4 items-center p-1 rounded-lg font-bold gap-1 mt-1">
-                    <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}" alt="arrowBlack">
+                    <img class="img_blackArrow" src="{{ url_for('static', filename='img/arrow-black.png') }}"
+                        alt="arrowBlack">
                     <button class="mr-1">Run Code</button>
                 </div>
-                <div id="submitCode" data-problem-id="{{ problem.id }}" class="flex submitCode mr-4 items-center px-3 rounded-lg font-bold gap-1 mt-1 disabledButton">
-                    <img class="img_blackArrow" src="{{ url_for('static', filename='img/submit.png') }}" alt="arrowBlack">
+                <div id="submitCode" data-problem-id="{{ problem.id }}"
+                    class="flex submitCode mr-4 items-center px-3 rounded-lg font-bold gap-1 mt-1 disabledButton">
+                    <img class="img_blackArrow" src="{{ url_for('static', filename='img/submit.png') }}"
+                        alt="arrowBlack">
                     <button class="mr-1">Submit</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

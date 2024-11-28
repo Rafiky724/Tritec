@@ -73,7 +73,6 @@ public class MoneyToEnglish {
             return dollarWords + " and " + centWords;
         }
 
-        return "asdasd";
+        return dollarWords;
     }
 }
-        

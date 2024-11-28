@@ -643,18 +643,19 @@ def money_to_english(num):
 #C#
 
 '''
-using System; 
+
+using System;
 
 namespace TritecAPI.problem_solver
 {
     public class MoneyToEnglish
     {
-        private static readonly string[] Ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
-        private static readonly string[] Tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-        private static readonly string[] Thousands = new string[] { "", "thousand", "million", "billion" };
-
         public string ConvertToWords(decimal number)
         {
+            string[] Ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+            string[] Tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+            string[] Thousands = new string[] { "", "thousand", "million", "billion" };
+
             if (number == 0)
             {
                 return "zero dollars";
@@ -671,19 +672,19 @@ namespace TritecAPI.problem_solver
 
             // Convert dollars (integer part)
             long dollars = (long)number;
-            numberInWords += ConvertWholeNumber(dollars) + " dollar" + (dollars != 1 ? "s" : "");
+            numberInWords += ConvertWholeNumber(dollars, Ones, Tens, Thousands) + " dollar" + (dollars != 1 ? "s" : "");
 
             // Convert cents (decimal part)
             int cents = (int)((number - dollars) * 100);
             if (cents > 0)
             {
-                numberInWords += " and " + ConvertWholeNumber(cents) + " cent" + (cents != 1 ? "s" : "");
+                numberInWords += " and " + ConvertWholeNumber(cents, Ones, Tens, Thousands) + " cent" + (cents != 1 ? "s" : "");
             }
 
             return numberInWords;
         }
 
-        private string ConvertWholeNumber(long number)
+        private string ConvertWholeNumber(long number, string[] Ones, string[] Tens, string[] Thousands)
         {
             if (number == 0)
             {
@@ -697,7 +698,7 @@ namespace TritecAPI.problem_solver
             {
                 if (number % 1000 != 0)
                 {
-                    result = ConvertHundreds(number % 1000) + (Thousands[thousandIndex] != "" ? " " + Thousands[thousandIndex] : "") + " " + result;
+                    result = ConvertHundreds(number % 1000, Ones, Tens) + (Thousands[thousandIndex] != "" ? " " + Thousands[thousandIndex] : "") + " " + result;
                 }
                 number /= 1000;
                 thousandIndex++;
@@ -706,7 +707,7 @@ namespace TritecAPI.problem_solver
             return result.Trim();
         }
 
-        private string ConvertHundreds(long number)
+        private string ConvertHundreds(long number, string[] Ones, string[] Tens)
         {
             string result = "";
 
@@ -731,6 +732,7 @@ namespace TritecAPI.problem_solver
         }
     }
 }
+
 
 '''
 
@@ -812,7 +814,7 @@ public class MoneyToEnglish {
             return dollarWords + " and " + centWords;
         }
 
-        return "asdasd";
+        return dollarWords;
     }
 }
         

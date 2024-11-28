@@ -1,15 +1,6 @@
 public class FizzBuzz {
-    
     public static String fizzBuzz(int numero) {
-        if (numero % 3 == 0 && numero % 5 == 0) {
-            return "FizzBuzz"; 
-        } else if (numero % 3 == 0) {
-            return "Fizz"; // Si es divisible solo por 3, retorna "Fizz"
-        } else if (numero % 5 == 0) {
-            return "Buzz"; // Si es divisible solo por 5, retorna "Buzz"
-        } else {
-            return Integer.toString(numero); // Si no es divisible ni por 3 ni por 5, retorna el número
-        }
+        return (numero % 3 == 0 ? "Fizz" : "") + (numero % 5 == 0 ? "Buzz" : (numero % 3 != 0 ? Integer.toString(numero) : ""));
     }
-}
-        
+
+} 

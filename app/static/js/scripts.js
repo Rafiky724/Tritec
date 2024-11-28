@@ -84,6 +84,8 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 
 function evaluateCode(aux) {
 
+  document.getElementById('loading-screen').style.display = 'block';
+
   const container = document.querySelector('#containerTest');
   container.innerHTML = '';
 
@@ -130,6 +132,7 @@ function evaluateCode(aux) {
         isSubmitEnabled = false;
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.add('disabledButton');
+        document.getElementById('loading-screen').style.display = 'none';
         mostrarMensaje("Error de compilación", "Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
         //alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
@@ -137,11 +140,13 @@ function evaluateCode(aux) {
       if (dataBools === 0){
 
         mostrarMensaje("Error de estructura", "El código no debe contener bucles 'if'.")
+        document.getElementById('loading-screen').style.display = 'none';
 
       }
       else if (dataBools === 1){
 
         mostrarMensaje("Error de estructura", "El código no parece implementar una búsqueda binaria.'.")
+        document.getElementById('loading-screen').style.display = 'none';
 
       }else{
 
@@ -153,6 +158,7 @@ function evaluateCode(aux) {
             let botonSubmit = document.getElementById("submitCode");
             botonSubmit.classList.add('disabledButton');
             mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+            document.getElementById('loading-screen').style.display = 'none';
             //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
   
           } else {
@@ -169,6 +175,7 @@ function evaluateCode(aux) {
             let botonSubmit = document.getElementById("submitCode");
             botonSubmit.classList.add('disabledButton');
             mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+            document.getElementById('loading-screen').style.display = 'none';
             //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
   
           } else {
@@ -188,6 +195,7 @@ function evaluateCode(aux) {
             let botonSubmit = document.getElementById("submitCode");
             botonSubmit.classList.add('disabledButton');
             mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+            document.getElementById('loading-screen').style.display = 'none';
             //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
             //showTests(dataBools, problem, language, aux);
           } else {
@@ -208,10 +216,11 @@ function evaluateCode(aux) {
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.add('disabledButton');
         mostrarMensaje("Error", "Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+        document.getElementById('loading-screen').style.display = 'none';
         //alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
       }, 500);
     });
-
+  
 }
 
 function showTests(dataBools, problem, language, aux) {
@@ -259,11 +268,13 @@ function showTests(dataBools, problem, language, aux) {
 
       if(aux){
         mostrarMensaje("¡Enviado!", "Tu código ha pasado todas las pruebas y ha sido subido con éxito.")
+        document.getElementById('loading-screen').style.display = 'none';
         submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
 
       }else{
 
         mostrarMensaje("¡Felicidades!", "Tu código ha pasado todas las pruebas.")
+        document.getElementById('loading-screen').style.display = 'none';
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.remove('disabledButton');
 
@@ -277,6 +288,7 @@ function showTests(dataBools, problem, language, aux) {
       isSubmitEnabled = false;
       let botonSubmit = document.getElementById("submitCode");
       botonSubmit.classList.add('disabledButton');
+      document.getElementById('loading-screen').style.display = 'none';
       //alert('Error. Tu código no ha pasado todas las pruebas.');
       mostrarMensaje("Error", "Tu código no ha pasado todas las pruebas.")
     }, 500);

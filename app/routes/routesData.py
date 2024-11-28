@@ -121,7 +121,7 @@ def problems():
         { 
             'id': '0',
             'title': 'FizzBuzz',
-            'problem': '<b>OBJETIVO:</b> \n\n El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n <b>Entrada:</b>: n: int : Un número entero (para python) o un numero long (para c#). \n\n <b>Salida:</b>: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> n = 15 \n\n <b>Salida:</b> = FizzBuzz \n\n <b>Explicacion:</b> = En este caso, 15 es divisible tanto por 3 como por 5, por lo que la salida es "FizzBuzz". <b>CONDICIONES:</b> \n\n NO SE DEBE USAR EL CICLO IF EN LA SOLUCIÓN.',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n <b>Entrada:</b>: n: int : Un número entero (para python) o un numero long (para c#). \n\n <b>Salida:</b>: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> n = 15 \n\n <b>Salida:</b> = FizzBuzz \n\n <b>Explicacion:</b> = En este caso, 15 es divisible tanto por 3 como por 5, por lo que la salida es "FizzBuzz".\n\n<b>CONDICIONES:</b>\nNo se debe usar "if" en la solución.',
             'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
             'stars': 3,
             "languages": {
@@ -167,7 +167,7 @@ def problems():
             'stars': 4,
             'languages': {
                 'python': {'code': 'def integer_to_roman(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System.Text;\n\n namespace TritecAPI.problem_solver\n{\n    public class integerToRoman\n    {\n        public string _intToRoman(int num)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'c#': {'code': 'using System.Text;\n\nnamespace TritecAPI.problem_solver\n{\n    public class integerToRoman\n    {\n        public string _intToRoman(int num)\n 		{\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
                 'java': {"code": "public class IntegerToRoman {\n    public static String integerToRoman(int num) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
@@ -191,7 +191,7 @@ def problems():
             'stars': 5,
             'languages': {
                 'python': {'code': 'def money_to_english(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class MoneyToEnglish \n    {\n        private static readonly string[] Ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" }; \n private static readonly string[] Tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" }; \n private static readonly string[] Thousands = new string[] { "", "thousand", "million", "billion" };\n  public string ConvertToWords(decimal number) \n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class MoneyToEnglish \n    {\n        public string ConvertToWords(decimal number) \n 		{\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
                 'java': {"code": "public class MoneyToEnglish {\n    \n    public static String moneyToEnglish(double num) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
