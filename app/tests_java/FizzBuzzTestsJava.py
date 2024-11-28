@@ -12,11 +12,9 @@ class FizzBuzzTestsJava():
     def tests(self, code):
         java_file = "app/problem_solver_java/FizzBuzz.java"
         
-        # Guardamos el código de FizzBuzz en el archivo Java
         with open(java_file, "w", encoding="utf-8") as f:
             f.write(code)
 
-        # Generamos el código del runner para ejecutar la función fizzBuzz
         java_runner_file = "app/problem_solver_java/RunMiClase.java"
         codigo_runner = """
 public class RunMiClase {
@@ -26,22 +24,17 @@ public class RunMiClase {
     }
 }
         """
-        # Guardamos el código del runner en su archivo
         with open(java_runner_file, "w", encoding="utf-8") as f:
             f.write(codigo_runner)
 
-        # Compilamos ambos archivos juntos: FizzBuzz.java y RunMiClase.java
         compilacion = subprocess.run(
             ["javac", "-encoding", "UTF-8", "app/problem_solver_java/FizzBuzz.java", java_runner_file], 
             capture_output=True, text=True
         )
 
-        # Si hay errores de compilación, los mostramos
         if compilacion.returncode != 0:
-            print("Detalles del error:", compilacion.stderr)
             return ("Error de compilación:", compilacion.stderr)
         else:
-            print("Compilación exitosa")
 
             resultados = []
 
@@ -52,12 +45,9 @@ public class RunMiClase {
                     capture_output=True, text=True
                 )
 
-                # Si el código Java se ejecutó correctamente, capturamos la salida
                 if ejecucion.returncode == 0:
-                    print(f"Fizzbuzz de {entrada}: ", ejecucion.stdout.strip())
                     resultados.append(esperado == ejecucion.stdout.strip())
                 else:
-                    print("Error en la ejecución:", ejecucion.stderr)
 
                     resultados.append(False)
                 
