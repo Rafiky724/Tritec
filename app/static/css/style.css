@@ -7,9 +7,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #041626;
-  /* font-family: "PT Mono", monospace;
-  font-weight: 400;
-  font-style: normal; */
 }
 
 nav {
@@ -294,7 +291,7 @@ nav ul li a {
 }
 
 .rightUser {
-  background-color: #012E40;
+  background-color: #012e40;
   width: 60%;
   height: 500px;
   border-radius: 10px;
@@ -310,16 +307,15 @@ nav ul li a {
   width: 7px;
 }
 .scroll-excersices::-webkit-scrollbar-thumb {
-  background-color: #004459; 
+  background-color: #004459;
 }
-
 
 .scroll-excersices::-webkit-scrollbar-track {
   background-color: #012e40;
 }
 
 .input-user {
-  background-color: #D5F4F7;
+  background-color: #d5f4f7;
 }
 
 .fade-in {
