@@ -246,6 +246,32 @@ nav ul li a {
   border-radius: 15px;
 }
 
+.modal{
+
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  z-index: 800;
+  padding: 30px;
+  border-radius: 10px;
+  transition: opacity 1s ease;
+  opacity: 0;
+  transform: translateX(-50%);
+
+}
+
+#titleModal{
+
+  font-weight: bold;
+  font-size: 125%;
+
+}
+
+#descriptionModal{
+
+  font-size: 90%;
+
+}
 
 @media screen and (min-height: 800px) {
   .col-2-mid {

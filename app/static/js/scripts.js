@@ -126,7 +126,8 @@ function evaluateCode(aux) {
         isSubmitEnabled = false;
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.add('disabledButton');
-        alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+        mostrarMensaje("Error de compilación", "Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+        //alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
 
       if (language == 'csharp') {
@@ -144,7 +145,8 @@ function evaluateCode(aux) {
           isSubmitEnabled = false;
           let botonSubmit = document.getElementById("submitCode");
           botonSubmit.classList.add('disabledButton');
-          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
 
         } else {
           showTests(dataBools, problem, language, aux);
@@ -159,7 +161,8 @@ function evaluateCode(aux) {
           isSubmitEnabled = false;
           let botonSubmit = document.getElementById("submitCode");
           botonSubmit.classList.add('disabledButton');
-          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
 
         } else {
 
@@ -175,7 +178,8 @@ function evaluateCode(aux) {
           isSubmitEnabled = false;
           let botonSubmit = document.getElementById("submitCode");
           botonSubmit.classList.add('disabledButton');
-          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
           //showTests(dataBools, problem, language, aux);
         } else {
 
@@ -192,7 +196,8 @@ function evaluateCode(aux) {
         isSubmitEnabled = false;
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.add('disabledButton');
-        alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
+        mostrarMensaje("Error", "Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
+        //alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
       }, 500);
     });
 
@@ -231,15 +236,18 @@ function showTests(dataBools, problem, language, aux) {
   if (dataBools.every(elemnt => elemnt === true)) {
 
     setTimeout(function () {
-      alert('Felicidades. Tu código ha pasado todas las pruebas.');
+      //alert('Felicidades. Tu código ha pasado todas las pruebas.');
+      
       isSubmitEnabled = true;
 
       if(aux){
 
+        mostrarMensaje("¡Felicidades!", "Tu código ha pasado todas las pruebas.")
         submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
 
       }else{
 
+        mostrarMensaje("¡Enviado!", "Tu código ha pasado todas las pruebas y ha sido subido con éxito.")
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.remove('disabledButton');
 
@@ -253,7 +261,8 @@ function showTests(dataBools, problem, language, aux) {
       isSubmitEnabled = false;
       let botonSubmit = document.getElementById("submitCode");
       botonSubmit.classList.add('disabledButton');
-      alert('Error. Tu código no ha pasado todas las pruebas.');
+      //alert('Error. Tu código no ha pasado todas las pruebas.');
+      mostrarMensaje("Error", "Tu código no ha pasado todas las pruebas.")
     }, 500);
 
   }
@@ -290,50 +299,14 @@ function submitCode(code, lang, problem, test, id, value) {
 
 }
 
-/*
-let buttonSubmit = document.getElementsById('submitCode').addEventListener('click', () => {
+function mostrarMensaje(title, description) {
 
-  let languageDisplay = document.querySelector("#language");
-  let language;
+  let modal = document.getElementById('modal');
+  document.getElementById('titleModal').innerHTML = title;
+  document.getElementById('descriptionModal').innerHTML = description;
 
-  if (languageDisplay.textContent === "Python") {
-
-    language = "python";
-
-  } else if(languageDisplay.textContent === "Java") {
-
-    language = "java";
-
-  }else{
-
-    language = "csharp";
-
-  }
-
-  let problem = document.querySelector('#problemTitle').textContent.trim();
-
-  const data = {
-    code: editor.getValue(),
-    language: language,
-    problem: problem
-  };
-
-  fetch('http://127.0.0.1:5000/enviar', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Éxito:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      setTimeout(function() {
-        alert('ERROR: Al enviar el código"');
-      }, 500); 
-    });
-
-})*/
+  modal.style.opacity = 1;
+  setTimeout(() => {
+    modal.style.opacity = 0;
+  }, 7000);
+}
