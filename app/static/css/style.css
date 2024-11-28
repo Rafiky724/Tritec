@@ -93,10 +93,15 @@ nav ul li a {
 }
 
 .total-container {
-  background-color: #004459;
   gap: 15px;
   margin: 10px 0;
   border-radius: 30px;
+}
+
+.total-container2 {
+  background-color: #004459;
+  margin: 10px 0;
+  border-radius: 10px;
 }
 
 .init-btn {
@@ -295,7 +300,24 @@ nav ul li a {
 
 .scroll-excersices {
   height: 460px;
-  overflow: scroll;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.scroll-excersices::-webkit-scrollbar {
+  width: 7px;
+}
+.scroll-excersices::-webkit-scrollbar-thumb {
+  background-color: #004459; 
+}
+
+
+.scroll-excersices::-webkit-scrollbar-track {
+  background-color: #012e40;
+}
+
+.input-user {
+  background-color: #D5F4F7;
 }
 
 @media screen and (min-height: 800px) {

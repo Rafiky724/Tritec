@@ -4,18 +4,25 @@
 
 {%block content %}
 <div class="flex justify-around items-center mt-16">
-    <div class="leftUser">
-        <div>
-            <img src="{{ url_for('static', filename='img/bigUser.png') }}" alt="{{ user['username'] }} " width="300px">
+    <div class="leftUser flex flex-col items-center p-4 rounded-lg justify-center">
+        <div class="mb-12">
+            <img src="{{ url_for('static', filename='img/bigUser.png') }}" alt="{{ user['username'] }}" class="rounded-full object-cover" width="180px">
         </div>
-        
-        {{ user['username'] }} 
-        {{ user['email'] }} 
+        <div class="text-x mb-6 w-full text-center ">
+            <p class="input-user p-3 rounded-lg">
+                {{ user['username'] }} 
+            </p>
+        </div>
+        <div class="text-x w-full text-center">
+            <p class="input-user p-3 rounded-lg">
+                {{ user['email'] }} 
+            </p>
+        </div>
     </div>
     
     
     <div class="rightUser">
-        <h4 class="text-3xl font-bold mb-4  text-white">Ejercicios</h4>
+        <h4 class="text-3xl font-bold mb-2  text-white">Ejercicios</h4>
     
         <div class="scroll-excersices">
             {% for card in cards %}  
