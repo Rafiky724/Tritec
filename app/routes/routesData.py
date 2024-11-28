@@ -383,9 +383,9 @@ def user():
         if i >= 0: 
             if user_exercise[i]:  
                 problem['status'] = problem['like']
-                problem['verify'] = 'Correcto'
+                problem['verify'] = 'Completado'
             else:
                 problem['status'] = problem['dislike']
-                problem['verify'] = 'Incorrecto'
+                problem['verify'] = 'No Completado'
     user = User().get_user()
     return render_template('settings.html', cards=problems, user=user)

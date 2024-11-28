@@ -99,7 +99,7 @@ nav ul li a {
 }
 
 .total-container2 {
-  background-color: #004459;
+  background-color: #041626;
   margin: 10px 0;
   border-radius: 10px;
 }
@@ -294,12 +294,14 @@ nav ul li a {
 }
 
 .rightUser {
+  background-color: #012E40;
   width: 60%;
   height: 500px;
+  border-radius: 10px;
 }
 
 .scroll-excersices {
-  height: 460px;
+  height: 430px;
   overflow-y: scroll;
   padding-right: 10px;
 }
