@@ -1,17 +1,42 @@
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  mode: "python",
-  lineNumbers: true,
-  theme: "dracula",
-  tabSize: 4,
-  indentUnit: 4,
-  lineWrapping: true,
+// Esperamos que el DOM esté completamente cargado antes de ejecutar el código
+document.addEventListener("DOMContentLoaded", function() {
+  var textareas = document.querySelectorAll("textarea[id='code']"); 
 
+  textareas.forEach(function(textarea) {
+      var editor = CodeMirror.fromTextArea(textarea, {
+          mode: "python",
+          lineNumbers: true,
+          theme: "dracula",
+          tabSize: 4,
+          indentUnit: 4,
+          lineWrapping: true,
+      });
+  });
 });
 
 function updateTerminal(language) {
+var editors = document.querySelectorAll('.CodeMirror'); 
+editors.forEach(function(editorElement) {
+  var editor = editorElement.CodeMirror; 
   editor.setOption("mode", language.toLowerCase());
-  console.log(editor);
+});
+console.log(editors);
 }
+
+// var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+//   mode: "python",
+//   lineNumbers: true,
+//   theme: "dracula",
+//   tabSize: 4,
+//   indentUnit: 4,
+//   lineWrapping: true,
+
+// });
+
+// function updateTerminal(language) {
+//   editor.setOption("mode", language.toLowerCase());
+//   console.log(editor);
+// }
 
 function toggleDropdown() {
   let dropdown = document.querySelector("#dropdown");
