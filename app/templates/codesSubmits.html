@@ -6,54 +6,53 @@
 
 <div class="m-10">
     <div class="grid grid-cols-[3fr_1.5fr] gap-1 grid-components">
-
         {% if codes %}
-
-        {% for code in codes %}
-        <div class="col-4-mid" style="z-index: 10;">
-            <div class="relative flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold"
-                id="dropdownButton" style="z-index: 100;">
-                {{code['problem']}}.py
-                <div class="relative language p-2 flex justify-between">
-                    <h4 id="language">{{ code['language'] }}</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-1 right p-1 rounded-l-lg flex items-center">
-            <div class="flex items-center gap-3 justify-between">
-                <img class="menu ml-2" src="{{ url_for('static', filename='img/menu.png') }}" alt="menu">
-                <div class="test-block font-bold" style="width: 26vw;">
-                    <h4>Pruebas </h4>
-                    <div class="flex" style="text-align: center; flex-direction: column;">
-                        <small>12/04/2020</small>
-                        <small>00:25:15</small>
+            {% for code in codes %}
+                <div class="col-4-mid" style="z-index: 10;">
+                    <div class="relative flex col-1 mid rounded-t-lg items-center justify-between p-2 font-bold"
+                        id="dropdownButton" style="z-index: 100;">
+                        {{code['problem']}}.py
+                        <div class="relative language p-2 flex justify-between">
+                            <h4 id="language">{{ code['language'] }}</h4>
+                        </div>
                     </div>
-                    
                 </div>
-            </div>
-        </div>
 
-        <div class="col-2-mid mb-5" style="z-index: 10;">
-            <textarea class="codeTextArea" name="code">
-{{ code['code'] }}
-            </textarea>
-        </div>
+                <div class="col-1 right p-1 rounded-l-lg flex items-center">
+                    <div class="flex items-center gap-3 justify-between">
+                        <img class="menu ml-2" src="{{ url_for('static', filename='img/menu.png') }}" alt="menu">
+                        <div class="test-block font-bold" style="width: 26vw;">
+                            <h4>Pruebas </h4>
+                            <div class="flex" style="text-align: center; flex-direction: column;">
+                                <small>12/04/2020</small>
+                                <small>00:25:15</small>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-2-side col-2-side-right mb-5">
-            <div id="containerTest" class="p-2">
-                {% for test in code['tests'] %}
-                <li class="flex tests mb-2 p-3 rounded-lg justify-between items-center">
-                    <span>Prueba {{ loop.index }}</span>
-                    <img src="./static/img/good.png" alt="Resultado Bueno">
-                </li>
-                {% endfor %}
-            </div>
-        </div>
-        {% endfor %}
+                <div class="col-2-mid mb-5" style="z-index: 10;">
+                    <textarea class="codeTextArea" name="code">
+        {{ code['code'] }}
+                    </textarea>
+                </div>
 
+                <div class="col-2-side col-2-side-right mb-5">
+                    <div id="containerTest" class="p-2">
+                        {% for test in code['tests'] %}
+                        <li class="flex tests mb-2 p-3 rounded-lg justify-between items-center">
+                            <span>Prueba {{ loop.index }}</span>
+                            <img src="./static/img/good.png" alt="Resultado Bueno">
+                        </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
         {% else %}
-        <h2>No has resuelto todavía este ejercicio :(</h2>
+            <div class="centrarNoEjercicio">
+                <h2>No has resuelto todavía este ejercicio :(</h2>
+            </div>
         {% endif %}
     </div>
 </div>
