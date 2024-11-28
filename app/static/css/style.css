@@ -121,6 +121,15 @@ nav ul li a {
   min-height: 560px;
 }
 
+.centrarNoEjercicio{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: x-large;
+}
+
 .CodeMirror {
   background-color: #020d14 !important;
   min-height: 560px !important;
