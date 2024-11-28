@@ -54,5 +54,5 @@ input {
 }
 
 input::placeholder{
-  color: white !important; 
+  color: #CCCCCC !important; 
 }
