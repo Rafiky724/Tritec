@@ -130,7 +130,7 @@ def problems():
                     "code": "using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class FizzBuzz : IProblemSolver\n    {\n        public string _fizzBuzz(long number)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}"
                 },
                 "java": {
-                    "code": "public class FizzBuzz {\n    \n    public static String fizzBuzz(int numero) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"
+                    "code": "public class FizzBuzz {\n    \n    public static String fizzBuzz(int numero) {\n            //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"
                 }
             }
         },            
@@ -143,7 +143,7 @@ def problems():
             'languages': {
                 'python': {'code': 'def is_palindrome(word):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class Palindrome\n    {\n        public bool _palindrome(string word)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "public class Palindrome {\n    public static boolean isPalindrome(String word) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'java': {"code": "public class Palindrome {\n    public static boolean isPalindrome(String word) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
                 
             }
         },
@@ -156,7 +156,7 @@ def problems():
             'languages': {
                 'python': {'code': 'def binary_search(arr, target):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                "java": {"code": "public class BinarySearch {\n    public static int binarySearch(int[] arr, int target) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                "java": {"code": "public class BinarySearch {\n    public static int binarySearch(int[] arr, int target) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -168,7 +168,7 @@ def problems():
             'languages': {
                 'python': {'code': 'def integer_to_roman(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using System.Text;\n\n namespace TritecAPI.problem_solver\n{\n    public class integerToRoman\n    {\n        public string _intToRoman(int num)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "public class IntegerToRoman {\n    public static String integerToRoman(int num) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'java': {"code": "public class IntegerToRoman {\n    public static String integerToRoman(int num) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -180,7 +180,7 @@ def problems():
             'languages': {
                 'python': {'code': 'def roman_to_integer(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using System.Collections.Generic;;\n\nnamespace TritecAPI.problem_solver\n{\n    public class RomanToInteger \n    {\n        public string _romanToInt(string s)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "import java.util.HashMap;\nimport java.util.Map;\n\npublic class RomanToInteger {\n    public static int romanToInteger(String num) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'java': {"code": "import java.util.HashMap;\nimport java.util.Map;\n\npublic class RomanToInteger {\n    public static int romanToInteger(String num) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -192,7 +192,7 @@ def problems():
             'languages': {
                 'python': {'code': 'def money_to_english(num):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
                 'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class MoneyToEnglish \n    {\n        private static readonly string[] Ones = new string[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" }; \n private static readonly string[] Tens = new string[] { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" }; \n private static readonly string[] Thousands = new string[] { "", "thousand", "million", "billion" };\n  public string ConvertToWords(decimal number) \n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "public class MoneyToEnglish {\n    \n    public static String moneyToEnglish(double num) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'java': {"code": "public class MoneyToEnglish {\n    \n    public static String moneyToEnglish(double num) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -203,8 +203,8 @@ def problems():
             'stars': 4,
             'languages': {
                 'python': {'code': 'def spiralmatrix(matrix):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class SpiralMatrix \n    {\n        public string _romanToInt(string s)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class SpiralMatrix {\n    public static List<Integer> spiralMatrix(int[][] matrix) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class SpiralMatrix \n    {\n        public string _romanToInt(string s){\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'java': {"code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class SpiralMatrix {\n    public static List<Integer> spiralMatrix(int[][] matrix) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -215,8 +215,8 @@ def problems():
             'stars': 2,
             'languages': {
                 'python': {'code': 'def median_of_two_sorted_arrays(array1, array2):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class MedianOfTwoSortedArrays \n {\n        public double FindMedianSortedArrays(int[] nums1, int[] nums2)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\n    public class MedianOfTwoSortedArrays {\n    public static double medianOfTwoSortedArrays(int[] array1, int[] array2) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class MedianOfTwoSortedArrays \n    {\n        public double FindMedianSortedArrays(int[] nums1, int[] nums2)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'java': {"code": "import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class MedianOfTwoSortedArrays {\n    public static double medianOfTwoSortedArrays(int[] array1, int[] array2) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -227,8 +227,8 @@ def problems():
             'stars': 3,
             'languages': {
                 'python': {'code': 'def longer_valid_parentheses(s):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public int LongestValidParentheses \n    {\n        public int LongestValidParentheses(string s) \n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "import java.util.Stack;\n\npublic class LongerValidParentheses {\n    public static int longerValidParentheses(String s) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public int LongestValidParentheses \n    {\n        public int LongestValidParentheses(string s) \n    	{\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'java': {"code": "import java.util.Stack;\n\npublic class LongerValidParentheses {\n    public static int longerValidParentheses(String s) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
         {
@@ -239,8 +239,8 @@ def problems():
             'stars': 1,
             'languages': {
                 'python': {'code': 'def count_Smaller(nums):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class CountofSmallerNumbersAfterSelf \n    {\n        public int[] CountSmaller(int[] nums)\n {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
-                'java': {"code": "public class CountSmaller {\n    public static int[] countSmaller(int[] nums) {\n            //ESCRIBE TU CÓDIGO AQUÍ    }\n}"}
+                'c#': {'code': 'using System; \n\nusing System.Collections.Generic; \n\nnamespace TritecAPI.problem_solver\n{\n    public class CountofSmallerNumbersAfterSelf \n    {\n        public int[] CountSmaller(int[] nums)\n 		{\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'java': {"code": "public class CountSmaller {\n    public static int[] countSmaller(int[] nums) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },
 
