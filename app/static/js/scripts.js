@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+let isSubmitEnabled = false;
+
 function updateTerminal(language) {
   var editors = document.querySelectorAll('.CodeMirror');
   editors.forEach(function (editorElement) {
@@ -66,7 +68,11 @@ function selectLanguaje(language) {
 
 let buttonSubmitCode = document.getElementById('submitCode').addEventListener('click', () => {
 
-  evaluateCode(true);
+  if(isSubmitEnabled){
+
+    evaluateCode(true);
+
+  }
 
 })
 
@@ -77,7 +83,6 @@ let buttonRunCode = document.getElementById('runCode').addEventListener('click',
 })
 
 function evaluateCode(aux) {
-
   let languageDisplay = document.querySelector("#language");
   let language;
 
@@ -118,6 +123,9 @@ function evaluateCode(aux) {
         dataBools = data['message'];
       } catch (error) {
         console.log('Error:', error);
+        isSubmitEnabled = false;
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.add('disabledButton');
         alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
 
@@ -133,6 +141,9 @@ function evaluateCode(aux) {
 
         if (typeof (dataBools) === 'string') {
 
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
 
         } else {
@@ -145,6 +156,9 @@ function evaluateCode(aux) {
 
         if (dataBools.length == 2) {
 
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
 
         } else {
@@ -158,8 +172,11 @@ function evaluateCode(aux) {
 
         if (dataBools.length == 1) {
 
-          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
-          showTests(dataBools, problem, language, aux);
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
+          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          //showTests(dataBools, problem, language, aux);
         } else {
 
           showTests(dataBools, problem, language, aux);
@@ -172,12 +189,14 @@ function evaluateCode(aux) {
     .catch((error) => {
       console.error('Error:', error);
       setTimeout(function () {
+        isSubmitEnabled = false;
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.add('disabledButton');
         alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
       }, 500);
     });
 
 }
-
 
 function showTests(dataBools, problem, language, aux) {
 
@@ -213,6 +232,7 @@ function showTests(dataBools, problem, language, aux) {
 
     setTimeout(function () {
       alert('Felicidades. Tu código ha pasado todas las pruebas.');
+      isSubmitEnabled = true;
 
       if(aux){
 
@@ -220,7 +240,8 @@ function showTests(dataBools, problem, language, aux) {
 
       }else{
 
-        
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.remove('disabledButton');
 
       }
       
@@ -229,6 +250,9 @@ function showTests(dataBools, problem, language, aux) {
   } else {
 
     setTimeout(function () {
+      isSubmitEnabled = false;
+      let botonSubmit = document.getElementById("submitCode");
+      botonSubmit.classList.add('disabledButton');
       alert('Error. Tu código no ha pasado todas las pruebas.');
     }, 500);
 
