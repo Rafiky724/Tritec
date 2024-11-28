@@ -171,12 +171,25 @@ nav ul li a {
   font-size: small;
 }
 
+.submitCode{
+  background-color: #FFFFFF;
+  color: #012e40;
+  cursor: pointer;
+  font-size: small;
+}
+
 .test-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   background-color: #012e40;
   height: 60px;
-  width: 150px;
-  padding: 11%;
-  font-size: small;
+  width: 20vw;
+  font-size: medium;
+}
+
+.buttonsRun {
+  display: flex;
 }
 
 .starss {
@@ -204,6 +217,20 @@ nav ul li a {
 .arrow-button {
   cursor: pointer;
 }
+
+.sesionActive{
+  display: flex;
+  color: #012E40;
+  gap: 10px;
+  align-items: center;
+}
+
+.sesionActive form{
+  background-color: #FFFFFF;
+  padding: 6px;
+  border-radius: 15px;
+}
+
 
 @media screen and (min-height: 800px) {
   .col-2-mid {

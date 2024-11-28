@@ -10,14 +10,14 @@
       </a>
     </li>
     <li>
-      <!--<a href="{{ url_for('bp.login') }}">Iniciar Sesion</a>-->
-      {% if session.get('user') and session['user'].get('username') %}
-        {{ session['logged_in'] }}
-        {{ session['user']['username'] }}
+      <div class="sesionActive">
+        {% if session.get('user') and session['user'].get('username') %}
+        <img src="../../static/img/user.png" alt="User" width="50px">
         <form action="{{ url_for('bp.signout') }}" method="GET">
           <button type="submit" class="btn btn-danger">Cerrar sesión</button>
         </form>
       {% endif %}
+      </div>
     </li>
   </ul>
 </nav>
