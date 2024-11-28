@@ -19,23 +19,23 @@ nav ul li a {
   font-weight: bold;
 }
 
-.navbar-color {
-  height: 50vh;
-  background-color: #012e40;
-}
-
 li img {
   width: 120px;
 }
 
+.navbar-color {
+  background-color: #012e40;
+}
+
 .tarjet {
   position: absolute;
-  top: 20%;
-  left: 30%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .color-card {
-  background-color: #136789;
+  background-color: #012E40;
 }
 
 .separate {
@@ -45,7 +45,14 @@ li img {
 }
 
 .inputs-form{
-
   color: gray;
+}
 
+input {
+  background-color: #105A6B;
+  border: none;
+}
+
+input::placeholder{
+  color: white !important; 
 }
