@@ -1,11 +1,15 @@
 from datetime import datetime
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 from passlib.hash import pbkdf2_sha256
-from .connection import db
+from .connection import DatabaseConnection
 import uuid
 
-userDB = db['users']
-codesDB = db['codes']
+db_connection = DatabaseConnection()
+
+# userDB = db['users']
+# codesDB = db['codes']
+userDB = db_connection.database['users']
+codesDB = db_connection.database['codes']
 
 class User:
 
