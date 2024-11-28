@@ -1,0 +1,22 @@
+<div class="total-container2 flex items-center">
+  <div class="w-full">
+    <div class="p-2 flex items-center space-x-4">
+      <div class="flex-shrink-0">
+        <img
+          class="image-user w-16 h-16 object-cover"
+          src="{{ card.image_url }}"
+          alt="{{ card.title }}"
+        />
+      </div>
+
+      <div class="flex-1">
+        <h3 class="title-exercise font-bold text-xl">{{ card.title }}</h3>
+      </div>
+
+      <div class="flex-shrink-0 flex gap-5 items-center">
+        <p class="text-m text-white">{{ card.verify }}</p>
+        <img class="w-12 h-12" src="{{ card.status }}" alt="{{ card.title }}" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -39,6 +39,11 @@ nav ul li a {
   height: auto;
 }
 
+.image-user {
+  width: 80px;
+  border-radius: 10px;
+}
+
 .container {
   padding: 20px;
 }
@@ -52,7 +57,7 @@ nav ul li a {
 }
 
 .card-color {
-  background-color: #012E40;
+  background-color: #012e40;
 }
 
 .long-card {
@@ -66,8 +71,14 @@ nav ul li a {
 }
 
 .excercises-color2 {
-  background: rgb(4,22,38);
-  background: linear-gradient(90deg, rgba(4,22,38,1) 0%, rgba(5,43,48,1) 42%, rgba(6,72,62,1) 67%, rgba(11,173,111,1) 100%);
+  background: rgb(4, 22, 38);
+  background: linear-gradient(
+    90deg,
+    rgba(4, 22, 38, 1) 0%,
+    rgba(5, 43, 48, 1) 42%,
+    rgba(6, 72, 62, 1) 67%,
+    rgba(11, 173, 111, 1) 100%
+  );
   border-radius: 15px;
   gap: 20px;
 }
@@ -83,6 +94,14 @@ nav ul li a {
 
 .total-container {
   gap: 15px;
+  margin: 10px 0;
+  border-radius: 30px;
+}
+
+.total-container2 {
+  background-color: #004459;
+  margin: 10px 0;
+  border-radius: 10px;
 }
 
 .init-btn {
@@ -121,7 +140,7 @@ nav ul li a {
   min-height: 560px;
 }
 
-.centrarNoEjercicio{
+.centrarNoEjercicio {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -180,8 +199,8 @@ nav ul li a {
   font-size: small;
 }
 
-.submitCode{
-  background-color: #FFFFFF;
+.submitCode {
+  background-color: #ffffff;
   color: #012e40;
   cursor: pointer;
   font-size: small;
@@ -233,19 +252,73 @@ nav ul li a {
   cursor: pointer;
 }
 
-.sesionActive{
+.sesionActive {
   display: flex;
-  color: #012E40;
+  color: #012e40;
   gap: 10px;
   align-items: center;
 }
 
-.sesionActive form{
-  background-color: #FFFFFF;
+.sesionActive form {
+  background-color: #ffffff;
   padding: 6px;
   border-radius: 15px;
 }
 
+.modal {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  z-index: 800;
+  padding: 30px;
+  border-radius: 10px;
+  transition: opacity 1s ease;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+#titleModal {
+  font-weight: bold;
+  font-size: 125%;
+}
+
+#descriptionModal {
+  font-size: 90%;
+}
+
+.leftUser {
+  width: 30%;
+  height: 500px;
+  background-color: #004459;
+  border-radius: 30px;
+}
+
+.rightUser {
+  width: 60%;
+  height: 500px;
+}
+
+.scroll-excersices {
+  height: 460px;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.scroll-excersices::-webkit-scrollbar {
+  width: 7px;
+}
+.scroll-excersices::-webkit-scrollbar-thumb {
+  background-color: #004459; 
+}
+
+
+.scroll-excersices::-webkit-scrollbar-track {
+  background-color: #012e40;
+}
+
+.input-user {
+  background-color: #D5F4F7;
+}
 
 @media screen and (min-height: 800px) {
   .col-2-mid {

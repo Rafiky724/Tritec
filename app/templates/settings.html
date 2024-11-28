@@ -3,10 +3,32 @@
 {% block title %}Perfil de Usuario{% endblock %}
 
 {%block content %}
-
-<div class="m-10">
-    <h1>Holi</h1>
-    {{ user['username'] }}
+<div class="flex justify-around items-center mt-16">
+    <div class="leftUser flex flex-col items-center p-4 rounded-lg justify-center" style="color: #565656;">
+        <div class="mb-12">
+            <img src="{{ url_for('static', filename='img/bigUser.png') }}" alt="{{ user['username'] }}" class="rounded-full object-cover" width="180px">
+        </div>
+        <div class="text-x mb-6 w-full text-center font-bold" >
+            <p class="input-user p-3 rounded-lg" >
+                {{ user['username'] }} 
+            </p>
+        </div>
+        <div class="text-x w-full text-center font-bold">
+            <p class="input-user p-3 rounded-lg">
+                {{ user['email'] }} 
+            </p>
+        </div>
+    </div>
+    
+    
+    <div class="rightUser">
+        <h4 class="text-3xl font-bold mb-2  text-white">Ejercicios</h4>
+    
+        <div class="scroll-excersices">
+            {% for card in cards %}  
+                {% include 'partials/cardUser.html' %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
-
 {% endblock %}
