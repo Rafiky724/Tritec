@@ -1,23 +1,22 @@
 <div class="total-container flex items-center">
-    {{ user['username'] }} 
-    {{ user['email'] }} 
-  <div class="mt-2">
+  <div class="mt-2 w-full">
+    <div class="mb-2 p-4 flex items-center space-x-4">
+      <div class="flex-shrink-0">
+        <img
+          class="image-user w-16 h-16 object-cover rounded-full"
+          src="{{ card.image_url }}"
+          alt="{{ card.title }}"
+        />
+      </div>
 
-    <div class="excercises-color mb-2 p-2 pr-4 flex items-center">
+      <div class="flex-1">
+        <h3 class="title-exercise font-bold text-xl">{{ card.title }}</h3>
+        <p class="text-sm text-gray-500">{{ card.verify }}</p>
+      </div>
 
-    <div class="flex justify-center items-center">
-        <img class="image-home" src="{{ card.image_url }}" alt="{{card.title}}" />
-    </div>
-    <div class="container-content w-80">
-        <div class="title-exercise font-bold text-1xl">
-          <h3>{{card.title}}</h3>
-        </div>
-
-        <img src="{{card.status}}" alt="{{card.title}}">
-        
-        <p>{{card.verify}}</p>
-    </div>
-      
+      <div class="flex-shrink-0">
+        <img class="w-6 h-6" src="{{ card.status }}" alt="{{ card.title }}" />
+      </div>
     </div>
   </div>
 </div>

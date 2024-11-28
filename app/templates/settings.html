@@ -1,18 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'baseProblem.html' %}
 
 {% block title %}Perfil de Usuario{% endblock %}
 
 {%block content %}
-
-<div class="mt-2">
-    <h1 class="text-3xl font-bold mb-6 ml-12 text-white">Ejercicios</h1>
-
-    <div class="p-6 card-color rounded-lg">
-        <h1 class="text-1xl text-white">Selecciona un ejercicio a resolver</h1>
+<div class="flex justify-around items-center mt-16">
+    <div class="leftUser">
+        <div>
+            <img src="{{ url_for('static', filename='img/bigUser.png') }}" alt="{{ user['username'] }} " width="300px">
+        </div>
+        
+        {{ user['username'] }} 
+        {{ user['email'] }} 
+    </div>
+    
+    
+    <div class="rightUser">
+        <h4 class="text-3xl font-bold mb-4  text-white">Ejercicios</h4>
+    
+        <div class="scroll-excersices">
             {% for card in cards %}  
                 {% include 'partials/cardUser.html' %}
             {% endfor %}
+        </div>
     </div>
 </div>
-
 {% endblock %}
