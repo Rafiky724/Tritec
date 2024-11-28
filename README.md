@@ -74,10 +74,38 @@ namespace TritecAPI.problem_solver
     {
         public string _fizzBuzz(long number)
         {
-            return number % 15 == 0 ? "FizzBuzz" :
-                   number % 3 == 0 ? "Fizz" :
-                   number % 5 == 0 ? "Buzz" :
-                   number.ToString();
+            
+            if (number % 15 == 0)
+            {
+                return "FizzBuzz";
+            }
+            else if (number % 3 == 0)
+            {
+                return "Fizz";
+            }
+            else if (number % 5 == 0)
+            {
+                return "Buzz";
+            }
+            else
+            {
+                return number.ToString(); 
+            }
+        }
+    }
+}
+
+--------------------------------------------------------------------------
+
+using TritecAPI.Interfaces;
+
+namespace TritecAPI.problem_solver
+{
+    public class FizzBuzz : IProblemSolver
+    {
+        public string _fizzBuzz(long number)
+        {
+            return (number % 3 == 0 ? "Fizz" : "") + (number % 5 == 0 ? "Buzz" : "") + (number % 3 != 0 && number % 5 != 0 ? number.ToString() : "");
         }
     }
 }
@@ -99,7 +127,16 @@ public class FizzBuzz {
         }
     }
 }
-        
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+public class FizzBuzz {
+    public static String fizzBuzz(int numero) {
+        return (numero % 3 == 0 ? "Fizz" : "") + (numero % 5 == 0 ? "Buzz" : (numero % 3 != 0 ? Integer.toString(numero) : ""));
+    }
+
+} 
+
 '''
 
 2. **Palindrome**:
@@ -147,6 +184,7 @@ namespace TritecAPI.problem_solver
 #Java
 
 '''
+
 public class Palindrome {
     public static boolean isPalindrome(String word) {
         // Eliminar espacios y convertir a minúsculas
@@ -170,22 +208,33 @@ public class Palindrome {
 
 '''
 def binary_search(arr, target):
-    left, right = 0, len(arr) - 1
-    while left <= right:
-        mid = (left + right) // 2
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
         if arr[mid] == target:
             return mid
         elif arr[mid] < target:
-            left = mid + 1
+            low = mid + 1
         else:
-            right = mid - 1
+            high = mid - 1
     return -1
+
+----------------------------------------
+
+def binary_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+
 '''
 
 #cshard
 
 '''
-using TritecAPI.Interfaces;
+
+using System;
 
 namespace TritecAPI.problem_solver
 {
@@ -193,24 +242,11 @@ namespace TritecAPI.problem_solver
     {
         public int _binarySearch(int[] array, int target)
         {
-            int left = 0;
-            int right = array.Length - 1;
-
-            while (left <= right)
+            for (int i = 0; i < array.Length; i++)
             {
-                int mid = left + (right - left) / 2;
-
-                if (array[mid] == target)
+                if (array[i] == target)
                 {
-                    return mid;
-                }
-                else if (array[mid] < target)
-                {
-                    left = mid + 1;
-                }
-                else
-                {
-                    right = mid - 1;
+                    return i; 
                 }
             }
 
@@ -218,30 +254,97 @@ namespace TritecAPI.problem_solver
         }
     }
 }
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+
+namespace TritecAPI.problem_solver
+{
+    public class BinarySearch
+    {
+        public int _binarySearch(int[] array, int target)
+        {
+            int low = 0;
+            int high = array.Length - 1;
+
+            (low <= high)
+            while (low <= high)
+            {
+     
+                int mid = low + (high - low) / 2;
+
+     
+                if (array[mid] == target)
+                {
+                    return mid; 
+                }
+                else if (array[mid] < target)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+            }
+
+            return -1;
+        }
+    }
+}
+
+
 '''
 
-#Java
 
+
+#Java
 '''
 public class BinarySearch {
     public static int binarySearch(int[] arr, int target) {
-        int left = 0, right = arr.length - 1;
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (arr[mid] == target) {
-                return mid;
-            } else if (arr[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i;
             }
         }
+        return -1;  
+    }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+public class BinarySearch {
+    public static int binarySearch(int[] arr, int target) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;  
+
+            if (arr[mid] == target) {
+                return mid;
+            }
+
+            if (arr[mid] < target) {
+                low = mid + 1;
+            }
+
+            else {
+                high = mid - 1;
+            }
+        }
+
         return -1;
     }
 }
-        
+
 '''
 
+
+        
 4. **Integer to Roman**
 
 #Python
