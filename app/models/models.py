@@ -70,6 +70,10 @@ class User:
         except Exception as e:
             print(f"Error al conectar o actualizar: {e}")
 
+    def get_user(self):
+        user = userDB.find_one({'_id': session['user']['_id']})
+        del user['password']
+        return user
 
 class Codes():
 
