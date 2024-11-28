@@ -27,7 +27,6 @@ class MedianOfTwoSortedArraysTests():
             try:
                 from app.problem_solver.medianoftwosortedarrays import median_of_two_sorted_arrays
                 resultado =  median_of_two_sorted_arrays(entrada[0], entrada[1])
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

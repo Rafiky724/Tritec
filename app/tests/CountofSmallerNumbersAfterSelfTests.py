@@ -30,7 +30,6 @@ class CountofSmallerNumbersAfterSelfTests():
             try:
                 from app.problem_solver.countofsmallernumbersafterself import count_Smaller
                 resultado = count_Smaller(lista)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

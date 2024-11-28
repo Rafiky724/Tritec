@@ -29,7 +29,6 @@ class LongerValidParenthesesTests():
             try:
                 from app.problem_solver.longervalidparentheses import longer_valid_parentheses
                 resultado = longer_valid_parentheses(entrada)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

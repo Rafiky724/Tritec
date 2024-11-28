@@ -17,7 +17,6 @@ class IntegerToRomanTests():
     def tests(self, name):
 
         try:
-            # Eliminar cualquier referencia anterior al módulo en sys.modules
             if 'app.problem_solver.integertoroman' in sys.modules:
                 del sys.modules['app.problem_solver.integertoroman']
         except Exception as e:
@@ -30,7 +29,6 @@ class IntegerToRomanTests():
             try:
                 from app.problem_solver.integertoroman import integer_to_roman
                 resultado = integer_to_roman(entrada)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)

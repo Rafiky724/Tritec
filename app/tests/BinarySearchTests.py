@@ -16,7 +16,6 @@ class BinarySearchTests():
     def tests(self, name):
 
         try:
-            # Eliminar cualquier referencia anterior al módulo en sys.modules
             if 'app.problem_solver.binarysearch' in sys.modules:
                 del sys.modules['app.problem_solver.binarysearch']
         except Exception as e:
@@ -31,7 +30,6 @@ class BinarySearchTests():
             try:
                 from app.problem_solver.binarysearch import binary_search
                 resultado = binary_search(lista, objetivo)
-                print(f"Resultado: {resultado}, esperado: {esperado}")
             except Exception as e:
                 return f"Error: {e}"
             resultados.append(resultado == esperado)
