@@ -155,7 +155,7 @@ def problems():
             'stars': 2,
             'languages': {
                 'python': {'code': 'def binary_search(arr, target):\n\n    #ESCRIBE TU CÓDIGO AQUÍ'},
-                'c#': {'code': 'using TritecAPI.Interfaces;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
+                'c#': {'code': 'using System;\n\nnamespace TritecAPI.problem_solver\n{\n    public class BinarySearch\n    {\n        public int _binarySearch(int[] array, int target)\n        {\n            //ESCRIBE TU CÓDIGO AQUÍ\n        }\n    }\n}'},
                 "java": {"code": "public class BinarySearch {\n    public static int binarySearch(int[] arr, int target) {\n        //ESCRIBE TU CÓDIGO AQUÍ\n    }\n}"}
             }
         },

@@ -37,25 +37,26 @@ def pythonProblem(user_code, problem):
 
     if problem == "FizzBuzz" and contains_if(user_code):
         print("Error: El código no debe contener bucles 'if'.")
-        return None
+        return 0
     
     if problem == "BinarySearch" and not is_binary_search_code(user_code):
         print("Error: El código no parece implementar una búsqueda binaria.")
-        return None
+        return 1
 
     problem_controller = CodesController(user_code, problem)
     response = problem_controller.set_up()
+    print(response)
     return response
 
 def cSharpProblem(user_code, problem):
 
     if problem == "FizzBuzz" and contains_if(user_code):
         print("Error: El código no debe contener bucles 'if'.")
-        return None
+        return 0
     
     if problem == "BinarySearch" and not is_binary_search_code(user_code):
         print("Error: El código no parece implementar una búsqueda binaria.")
-        return None
+        return 1
     
     data = {'codigo': user_code, 'problema': problem}
     url = "https://localhost:7202/Codigo/Recibir"
@@ -72,15 +73,14 @@ def cSharpProblem(user_code, problem):
 def javaProblem(user_code, problem):
     if problem == "FizzBuzz" and contains_if(user_code):
         print("Error: El código no debe contener bucles 'if'.")
-        return None
+        return 0
     
     if problem == "BinarySearch" and not is_binary_search_code(user_code):
         print("Error: El código no parece implementar una búsqueda binaria.")
-        return None
+        return 1
 
     problem_controller = CodesControllerJava(user_code, problem)
     response = problem_controller.set_up()
-    print(response)
     return response
 
 def reload_module():

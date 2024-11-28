@@ -273,16 +273,13 @@ namespace TritecAPI.problem_solver
             int low = 0;
             int high = array.Length - 1;
 
-            (low <= high)
             while (low <= high)
             {
-     
                 int mid = low + (high - low) / 2;
 
-     
                 if (array[mid] == target)
                 {
-                    return mid; 
+                    return mid; // Si es así, devolvemos el índice
                 }
                 else if (array[mid] < target)
                 {
@@ -295,8 +292,8 @@ namespace TritecAPI.problem_solver
             }
 
             return -1;
-        }
-    }
+        }
+    }
 }
 
 

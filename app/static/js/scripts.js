@@ -134,64 +134,70 @@ function evaluateCode(aux) {
         //alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
 
-      if (language == 'csharp') {
-        /*
-        dataBools = dataBools.slice(1, -1);
-        console.log(dataBools);
-        let boolArrayStr = dataBools.split(",");
+      if (dataBools === 0){
 
-        dataBools = boolArrayStr.map(str => str.trim() === 'true');*/
-
-        console.log(dataBools);
-
-        if (typeof (dataBools) === 'string') {
-
-          isSubmitEnabled = false;
-          let botonSubmit = document.getElementById("submitCode");
-          botonSubmit.classList.add('disabledButton');
-          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
-          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
-
-        } else {
-          showTests(dataBools, problem, language, aux);
-        }
+        mostrarMensaje("Error de estructura", "El código no debe contener bucles 'if'.")
 
       }
+      else if (dataBools === 1){
 
-      if (language == 'java') {
+        mostrarMensaje("Error de estructura", "El código no parece implementar una búsqueda binaria.'.")
 
-        if (dataBools.length == 2) {
+      }else{
 
-          isSubmitEnabled = false;
-          let botonSubmit = document.getElementById("submitCode");
-          botonSubmit.classList.add('disabledButton');
-          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
-          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+        if (language == 'csharp') {
 
-        } else {
-
-          showTests(dataBools, problem, language, aux);
-
+          if (typeof (dataBools) === 'string') {
+  
+            isSubmitEnabled = false;
+            let botonSubmit = document.getElementById("submitCode");
+            botonSubmit.classList.add('disabledButton');
+            mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+            //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+  
+          } else {
+            showTests(dataBools, problem, language, aux);
+          }
+  
+        }
+  
+        if (language == 'java') {
+  
+          if (dataBools.length == 2) {
+  
+            isSubmitEnabled = false;
+            let botonSubmit = document.getElementById("submitCode");
+            botonSubmit.classList.add('disabledButton');
+            mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+            //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
+  
+          } else {
+  
+            showTests(dataBools, problem, language, aux);
+  
+          }
+  
         }
 
-      }
-      if (language == 'python') {
-
-        console.log(typeof dataBools);
-        if (typeof dataBools === 'string') {
-
-          isSubmitEnabled = false;
-          let botonSubmit = document.getElementById("submitCode");
-          botonSubmit.classList.add('disabledButton');
-          mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
-          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
-          //showTests(dataBools, problem, language, aux);
-        } else {
-
-          showTests(dataBools, problem, language, aux);
-
+        if (language == 'python') {
+  
+          console.log(typeof dataBools);
+          if (typeof dataBools === 'string') {
+  
+            isSubmitEnabled = false;
+            let botonSubmit = document.getElementById("submitCode");
+            botonSubmit.classList.add('disabledButton');
+            mostrarMensaje("Error de compilación", `Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
+            //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+            //showTests(dataBools, problem, language, aux);
+          } else {
+  
+            showTests(dataBools, problem, language, aux);
+  
+          }
+  
         }
-
+  
       }
 
     })
