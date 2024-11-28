@@ -298,3 +298,11 @@ def submits():
     codes = list(Codes().get_codes(value))
     #print(codes)
     return render_template('codesSubmits.html', value=value, codes=codes)
+
+
+@bp.route('/user')
+@login_required
+def user():
+
+    user = User().get_user()
+    return render_template('settings.html', user=user)

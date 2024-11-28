@@ -121,6 +121,15 @@ nav ul li a {
   min-height: 560px;
 }
 
+.centrarNoEjercicio{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: x-large;
+}
+
 .CodeMirror {
   background-color: #020d14 !important;
   min-height: 560px !important;
@@ -176,6 +185,7 @@ nav ul li a {
   color: #012e40;
   cursor: pointer;
   font-size: small;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .test-block {
@@ -190,6 +200,11 @@ nav ul li a {
 
 .buttonsRun {
   display: flex;
+}
+
+.disabledButton {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .starss {

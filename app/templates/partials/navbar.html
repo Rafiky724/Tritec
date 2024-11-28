@@ -12,7 +12,9 @@
     <li>
       <div class="sesionActive">
         {% if session.get('user') and session['user'].get('username') %}
-        <img src="../../static/img/user.png" alt="User" width="50px">
+        <a href="{{ url_for('bp.user') }}">
+          <img src="../../static/img/user.png" alt="User" width="50px">
+        </a>
         <form action="{{ url_for('bp.signout') }}" method="GET">
           <button type="submit" class="btn btn-danger">Cerrar sesión</button>
         </form>

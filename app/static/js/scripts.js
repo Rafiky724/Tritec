@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+let isSubmitEnabled = false;
+
 function updateTerminal(language) {
   var editors = document.querySelectorAll('.CodeMirror');
   editors.forEach(function (editorElement) {
@@ -64,7 +66,23 @@ function selectLanguaje(language) {
 
 }
 
-let buttonRunCode = document.getElementById('submitCode').addEventListener('click', () => {
+let buttonSubmitCode = document.getElementById('submitCode').addEventListener('click', () => {
+
+  if(isSubmitEnabled){
+
+    evaluateCode(true);
+
+  }
+
+})
+
+let buttonRunCode = document.getElementById('runCode').addEventListener('click', () => {
+
+  evaluateCode(false);
+
+})
+
+function evaluateCode(aux) {
   let languageDisplay = document.querySelector("#language");
   let language;
 
@@ -105,6 +123,9 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
         dataBools = data['message'];
       } catch (error) {
         console.log('Error:', error);
+        isSubmitEnabled = false;
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.add('disabledButton');
         alert("ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.")
       }
 
@@ -118,12 +139,15 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
         console.log(dataBools);
 
-        if(typeof(dataBools) === 'string') {
+        if (typeof (dataBools) === 'string') {
 
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools}`)
 
-        }else{
-          showTests(dataBools, problem, language);
+        } else {
+          showTests(dataBools, problem, language, aux);
         }
 
       }
@@ -132,11 +156,14 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
         if (dataBools.length == 2) {
 
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
           alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}\n${dataBools[1]}`)
 
         } else {
 
-          showTests(dataBools, problem, language);
+          showTests(dataBools, problem, language, aux);
 
         }
 
@@ -145,11 +172,14 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
 
         if (dataBools.length == 1) {
 
-          //alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
-          showTests(dataBools, problem, language);
+          isSubmitEnabled = false;
+          let botonSubmit = document.getElementById("submitCode");
+          botonSubmit.classList.add('disabledButton');
+          alert(`ERROR DE COMPILACIÓN: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.\n\n${dataBools[0]}`)
+          //showTests(dataBools, problem, language, aux);
         } else {
 
-          showTests(dataBools, problem, language);
+          showTests(dataBools, problem, language, aux);
 
         }
 
@@ -159,13 +189,16 @@ let buttonRunCode = document.getElementById('submitCode').addEventListener('clic
     .catch((error) => {
       console.error('Error:', error);
       setTimeout(function () {
+        isSubmitEnabled = false;
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.add('disabledButton');
         alert('ERROR: Por favor verifica tu código. Recuerda que no debes borrar la plantilla inicial de código.');
       }, 500);
     });
 
-})
+}
 
-function showTests(dataBools, problem, language) {
+function showTests(dataBools, problem, language, aux) {
 
   const container = document.querySelector('#containerTest');
 
@@ -199,12 +232,27 @@ function showTests(dataBools, problem, language) {
 
     setTimeout(function () {
       alert('Felicidades. Tu código ha pasado todas las pruebas.');
-      submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
+      isSubmitEnabled = true;
+
+      if(aux){
+
+        submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
+
+      }else{
+
+        let botonSubmit = document.getElementById("submitCode");
+        botonSubmit.classList.remove('disabledButton');
+
+      }
+      
     }, 500);
 
   } else {
 
     setTimeout(function () {
+      isSubmitEnabled = false;
+      let botonSubmit = document.getElementById("submitCode");
+      botonSubmit.classList.add('disabledButton');
       alert('Error. Tu código no ha pasado todas las pruebas.');
     }, 500);
 
