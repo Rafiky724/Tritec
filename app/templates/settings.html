@@ -1,12 +1,18 @@
-{% extends 'baseProblem.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Perfil de Usuario{% endblock %}
 
 {%block content %}
 
-<div class="m-10">
-    <h1>Holi</h1>
-    {{ user['username'] }}
+<div class="mt-2">
+    <h1 class="text-3xl font-bold mb-6 ml-12 text-white">Ejercicios</h1>
+
+    <div class="p-6 card-color rounded-lg">
+        <h1 class="text-1xl text-white">Selecciona un ejercicio a resolver</h1>
+            {% for card in cards %}  
+                {% include 'partials/cardUser.html' %}
+            {% endfor %}
+    </div>
 </div>
 
 {% endblock %}

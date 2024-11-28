@@ -303,6 +303,89 @@ def submits():
 @bp.route('/user')
 @login_required
 def user():
+    user_exercise = session['user']['exercise']
+    
+    problems = [
+        { 
+            'id': '0',
+            'title': 'FizzBuzz',
+            'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },            
+        {
+            'id': '1',
+            'title': 'Palindrome',
+            'image_url': url_for('static', filename='img/palindrome-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '2',
+            'title': 'BinarySearch',
+            'image_url': url_for('static', filename='img/binary-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '3',
+            'title': 'IntegerToRoman',
+            'image_url': url_for('static', filename='img/integerToRoman-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '4',
+            'title': 'RomanToInteger',
+            'image_url': url_for('static', filename='img/romanToInteger-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '5',
+            'title': 'MoneyToEnglish',
+            'image_url': url_for('static', filename='img/moneyToEnglish-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '6',
+            'title': 'SpiralMatrix',
+            'image_url': url_for('static', filename='img/spiral-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '7',
+            'title': 'MedianOfTwoSortedArrays',
+            'image_url': url_for('static', filename='img/median-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '8',
+            'title': 'LongerValidParentheses',
+            'image_url': url_for('static', filename='img/parentheses-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
+        {
+            'id': '9',
+            'title': 'CountofSmallerNumbersAfterSelf',
+            'image_url': url_for('static', filename='img/count-logo.png'),
+            'like': url_for('static', filename='img/complete.png'),
+            'dislike': url_for('static', filename='img/uncomplete.png'),
+        },
 
+    ]
+
+    for i, problem in enumerate(problems):
+        if i >= 0: 
+            if user_exercise[i]:  
+                problem['status'] = problem['like']
+                problem['verify'] = 'Correcto'
+            else:
+                problem['status'] = problem['dislike']
+                problem['verify'] = 'Incorrecto'
     user = User().get_user()
-    return render_template('settings.html', user=user)
+    return render_template('settings.html', cards=problems, user=user)
