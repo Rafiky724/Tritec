@@ -61,6 +61,11 @@ def fizzbuzz(n):
         return "Buzz"
     else:
         return str(n)
+------------------------------------------
+
+def fizzbuzz(n):
+    return "Fizz" * (n % 3 == 0) + "Buzz" * (n % 5 == 0) or str(n)
+
 '''
 
 #cshard
