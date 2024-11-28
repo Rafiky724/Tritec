@@ -121,7 +121,7 @@ def problems():
         { 
             'id': '0',
             'title': 'FizzBuzz',
-            'problem': '<b>OBJETIVO:</b> \n\n El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n <b>Entrada:</b>: n: int : Un número entero (para python) o un numero long (para c#). \n\n <b>Salida:</b>: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> n = 15 \n\n <b>Salida:</b> = FizzBuzz \n\n <b>Explicacion:</b> = En este caso, 15 es divisible tanto por 3 como por 5, por lo que la salida es "FizzBuzz".',
+            'problem': '<b>OBJETIVO:</b> \n\n El objetivo del ejercicio es verificar si un numero dado cumple las condiciones: \n\n Divisibilidad por 3: Si el numero es divisible por 3, devolverás "Fizz". \n\n Divisibilidad por ambos: Si el numero es divisible por 5, devolverás "Buzz". \n\n Divisibilidad por 3: Si el numero es divisible por ambos, devolveras "FizzBuzz". \n\n No es divisible ni por 3 ni por 5: Si el número no es divisible ni por 3 ni por 5, devolverás el número en forma de cadena. \n\n <b>Entrada:</b>: n: int : Un número entero (para python) o un numero long (para c#). \n\n <b>Salida:</b>: str: devuelve "Fizz", "Buzz", "FizzBuzz", o el número en forma de cadena. \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b> n = 15 \n\n <b>Salida:</b> = FizzBuzz \n\n <b>Explicacion:</b> = En este caso, 15 es divisible tanto por 3 como por 5, por lo que la salida es "FizzBuzz". <b>CONDICIONES:</b> \n\n NO SE DEBE USAR EL CICLO IF EN LA SOLUCIÓN.',
             'image_url': url_for('static', filename='img/fizzbuzz-logo.png'),
             'stars': 3,
             "languages": {
@@ -150,7 +150,7 @@ def problems():
         {
             'id': '2',
             'title': 'BinarySearch',
-            'problem': '<b>OBJETIVO:</b> \n\n Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo. \n\n <b>Entrada:</b>: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar).\n\n <b>Salida:</b>: int: El indice del target en el arreglo si se encuentra. En caso contrario, se devuelve -1). \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: arr = [1, 3, 5, 7, 9, 11], target = 7 \n\n <b>Salida:</b> = 3 \n\n <b>Explicacion:</b> = El valor 7 se encuentra en la posicion 3 del arreglo  ',
+            'problem': '<b>OBJETIVO:</b> \n\n Realiza una busqueda binario en un arreglo ordenado para encontrar la posicion de un valor objetivo. \n\n <b>Entrada:</b>: arr (Un arreglo ordenado de elementos), target(El valor que se desea encontrar).\n\n <b>Salida:</b>: int: El indice del target en el arreglo si se encuentra. En caso contrario, se devuelve -1). \n\n <b>Ejemplo:</b> \n\n <b>Entrada:</b>: arr = [1, 3, 5, 7, 9, 11], target = 7 \n\n <b>Salida:</b> = 3 \n\n <b>Explicacion:</b> = El valor 7 se encuentra en la posicion 3 del arreglo \n\n <b>CONDICIONES:</b> \n\n Establecer los índices low, high y mid, Funcionar con un ciclo while, su respectivo retorno',           
             'image_url': url_for('static', filename='img/binary-logo.png'),
             'stars': 2,
             'languages': {
