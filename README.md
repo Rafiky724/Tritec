@@ -82,6 +82,25 @@ namespace TritecAPI.problem_solver
     }
 }
 '''
+#Java
+
+'''
+public class FizzBuzz {
+    
+    public static String fizzBuzz(int numero) {
+        if (numero % 3 == 0 && numero % 5 == 0) {
+            return "FizzBuzz"; 
+        } else if (numero % 3 == 0) {
+            return "Fizz"; // Si es divisible solo por 3, retorna "Fizz"
+        } else if (numero % 5 == 0) {
+            return "Buzz"; // Si es divisible solo por 5, retorna "Buzz"
+        } else {
+            return Integer.toString(numero); // Si no es divisible ni por 3 ni por 5, retorna el número
+        }
+    }
+}
+        
+'''
 
 2. **Palindrome**:
 
@@ -123,6 +142,26 @@ namespace TritecAPI.problem_solver
         }
     }
 }
+'''
+
+#Java
+
+'''
+public class Palindrome {
+    public static boolean isPalindrome(String word) {
+        // Eliminar espacios y convertir a minúsculas
+        word = word.replace(" ", "").toLowerCase();
+        
+        int length = word.length();
+        for (int i = 0; i < length / 2; i++) {
+            if (word.charAt(i) != word.charAt(length - i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+        
 '''
 
 3. **Binary Search**:
@@ -179,6 +218,28 @@ namespace TritecAPI.problem_solver
         }
     }
 }
+'''
+
+#Java
+
+'''
+public class BinarySearch {
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+}
+        
 '''
 
 4. **Integer to Roman**
@@ -254,6 +315,47 @@ namespace TritecAPI.problem_solver
 }
 
 '''
+
+#Java
+
+'''
+public class IntegerToRoman {
+    public static String integerToRoman(int num) {
+        // Arreglo con los valores de los números romanos
+        int[] val = {
+            1000, 900, 500, 400,
+            100, 90, 50, 40,
+            10, 9, 5, 4,
+            1
+        };
+
+        // Arreglo con los símbolos correspondientes a cada valor
+        String[] syms = {
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV",
+            "I"
+        };
+
+        // Cadena para almacenar el resultado
+        StringBuilder romanNum = new StringBuilder();
+
+        // Iterar sobre los valores romanos
+        for (int i = 0; i < val.length; i++) {
+            // Mientras el número sea mayor que el valor actual
+            while (num >= val[i]) {
+                romanNum.append(syms[i]);  // Añadir el símbolo correspondiente
+                num -= val[i];             // Restar el valor de num
+            }
+        }
+
+        return romanNum.toString();
+    }
+}
+        
+
+'''
+
 5. **Roman to Integer**
 
 #Python
@@ -326,6 +428,49 @@ namespace TritecAPI.problem_solver
     }
 }
 
+'''
+
+#Java
+
+'''
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RomanToInteger {
+    public static int romanToInteger(String num) {
+        // Crear un mapa de los valores de los números romanos
+        Map<Character, Integer> romanNumerals = new HashMap<>();
+        romanNumerals.put('I', 1);
+        romanNumerals.put('V', 5);
+        romanNumerals.put('X', 10);
+        romanNumerals.put('L', 50);
+        romanNumerals.put('C', 100);
+        romanNumerals.put('D', 500);
+        romanNumerals.put('M', 1000);
+
+        int total = 0;
+        int prevValue = 0;
+
+        // Recorrer el número romano de derecha a izquierda
+        for (int i = num.length() - 1; i >= 0; i--) {
+            char currentChar = num.charAt(i);
+            int value = romanNumerals.get(currentChar);
+
+            // Si el valor actual es menor que el valor anterior, restamos, sino sumamos
+            if (value < prevValue) {
+                total -= value;
+            } else {
+                total += value;
+            }
+
+            prevValue = value;  // Actualizamos el valor anterior
+        }
+
+        return total;
+    }
+}
+        
 '''
 
 6. **Money To English**
@@ -483,6 +628,91 @@ namespace TritecAPI.problem_solver
 }
 
 '''
+
+#Java
+
+'''
+public class MoneyToEnglish {
+    
+    public static String moneyToEnglish(double num) {
+        if (num < 0) {
+            return "negative " + moneyToEnglish(-num);
+        }
+
+        // Arrays con las palabras correspondientes
+        String[] units = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", 
+                          "sixteen", "seventeen", "eighteen", "nineteen"};
+        String[] tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+
+        // Si el número es 0
+        if (num == 0) {
+            return "zero dollars";
+        }
+
+        // Separar la parte de los dólares y los centavos
+        int dollars = (int) num;
+        int cents = (int) Math.round((num - dollars) * 100);
+
+        StringBuilder words = new StringBuilder();
+
+        // Convertir dólares a palabras
+        if (dollars >= 1000) {
+            words.append(units[dollars / 1000]).append(" thousand ");
+            dollars %= 1000;
+        }
+
+        if (dollars >= 100) {
+            words.append(units[dollars / 100]).append(" hundred ");
+            dollars %= 100;
+        }
+
+        if (dollars >= 20) {
+            words.append(tens[dollars / 10]).append(" ");
+            dollars %= 10;
+        }
+
+        if (dollars >= 10) {
+            words.append(teens[dollars - 10]).append(" ");
+            dollars = 0;
+        }
+
+        if (dollars > 0) {
+            words.append(units[dollars]).append(" ");
+        }
+
+        // Agregar "dollar" o "dollars"
+        String dollarWords = words.toString().trim() + (words.toString().trim().equals("one") ? " dollar" : " dollars");
+
+        // Si hay centavos, convertirlos a palabras
+        if (cents > 0) {
+            words.setLength(0); // Limpiar el StringBuilder para los centavos
+
+            if (cents >= 20) {
+                words.append(tens[cents / 10]).append(" ");
+                cents %= 10;
+            }
+
+            if (cents >= 10) {
+                words.append(teens[cents - 10]).append(" ");
+                cents = 0;
+            }
+
+            if (cents > 0) {
+                words.append(units[cents]).append(" ");
+            }
+
+            // Agregar "cent" o "cents"
+            String centWords = words.toString().trim() + (words.toString().trim().equals("one") ? " cent" : " cents");
+            return dollarWords + " and " + centWords;
+        }
+
+        return "asdasd";
+    }
+}
+        
+'''
+
 7. **Spiral Matrix**
 
 #Python
@@ -578,6 +808,60 @@ namespace TritecAPI.problem_solver
     }
 }
 '''
+
+#Java
+
+'''
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpiralMatrix {
+    public static List<Integer> spiralMatrix(int[][] matrix) {
+        List<Integer> result = new ArrayList<>();
+        
+        // Verificar si la matriz está vacía
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return result;
+        }
+
+        int top = 0, bottom = matrix.length - 1;
+        int left = 0, right = matrix[0].length - 1;
+
+        while (top <= bottom && left <= right) {
+            // Recorrer de izquierda a derecha en la fila superior
+            for (int i = left; i <= right; i++) {
+                result.add(matrix[top][i]);
+            }
+            top++;
+
+            // Recorrer de arriba a abajo en la columna derecha
+            for (int i = top; i <= bottom; i++) {
+                result.add(matrix[i][right]);
+            }
+            right--;
+
+            // Recorrer de derecha a izquierda en la fila inferior (si aún es válida)
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+
+            // Recorrer de abajo a arriba en la columna izquierda (si aún es válida)
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+
+        return result;
+    }
+}
+        
+'''
 8. **Median Of Two Sorted Arrays**
 
 #Python
@@ -655,6 +939,37 @@ namespace TritecAPI.problem_solver
 }
 
 
+#Java
+
+'''
+
+import java.util.Arrays;
+
+public class MedianOfTwoSortedArrays {
+    public static double medianOfTwoSortedArrays(int[] array1, int[] array2) {
+        // Crear una lista para combinar ambos arrays
+        int[] combinedArray = new int[array1.length + array2.length];
+        
+        // Copiar los elementos de ambos arrays a la lista combinada
+        System.arraycopy(array1, 0, combinedArray, 0, array1.length);
+        System.arraycopy(array2, 0, combinedArray, array1.length, array2.length);
+        
+        // Ordenar el array combinado
+        Arrays.sort(combinedArray);
+        
+        // Calcular el tamaño del array combinado
+        int size = combinedArray.length;
+        
+        // Si el tamaño es impar, la mediana es el valor del medio
+        if (size % 2 == 1) {
+            return combinedArray[size / 2];
+        } else {
+            // Si el tamaño es par, la mediana es el promedio de los dos valores centrales
+            return (combinedArray[size / 2 - 1] + combinedArray[size / 2]) / 2.0;
+        }
+    }
+}
+        
 '''
 
 9. **Longer Valid Parentheses**
@@ -722,6 +1037,44 @@ namespace TritecAPI.problem_solver
 
 '''
 
+#Java
+
+'''
+
+import java.util.Stack;
+
+public class LongerValidParentheses {
+    public static int longerValidParentheses(String s) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);  // Agregar un marcador inicial para manejar casos como "()"
+
+        int maxLength = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char charAt = s.charAt(i);
+
+            if (charAt == '(') {
+                // Coloca el índice del paréntesis de apertura en la pila
+                stack.push(i);
+            } else if (charAt == ')') {
+                // Desapilar el índice del paréntesis de apertura correspondiente
+                stack.pop();
+
+                // Si la pila no está vacía, calcular la longitud del paréntesis válido
+                if (!stack.isEmpty()) {
+                    maxLength = Math.max(maxLength, i - stack.peek());
+                } else {
+                    // Si la pila está vacía, agregamos el índice actual como marcador base
+                    stack.push(i);
+                }
+            }
+        }
+
+        return maxLength/2;
+    }
+}
+        
+'''
 
 10. **Count Of Smaller Numbers After Self**
 
@@ -814,5 +1167,28 @@ namespace TritecAPI.problem_solver
         }
     }
 }
+
+'''
+
+#Java
+
+
+'''
+public class CountSmaller {
+    public static int[] countSmaller(int[] nums) {
+        int[] counts = new int[nums.length];
+        
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[i]) {
+                    counts[i]++;
+                }
+            }
+        }
+        
+        return counts;
+    }
+}
+        
 
 '''
