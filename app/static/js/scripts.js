@@ -241,13 +241,12 @@ function showTests(dataBools, problem, language, aux) {
       isSubmitEnabled = true;
 
       if(aux){
-
-        mostrarMensaje("¡Felicidades!", "Tu código ha pasado todas las pruebas.")
+        mostrarMensaje("¡Enviado!", "Tu código ha pasado todas las pruebas y ha sido subido con éxito.")
         submitCode(editor.getValue(), language, problem, dataBools, document.getElementById("submitCode").dataset.problemId, true);
 
       }else{
 
-        mostrarMensaje("¡Enviado!", "Tu código ha pasado todas las pruebas y ha sido subido con éxito.")
+        mostrarMensaje("¡Felicidades!", "Tu código ha pasado todas las pruebas.")
         let botonSubmit = document.getElementById("submitCode");
         botonSubmit.classList.remove('disabledButton');
 
