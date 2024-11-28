@@ -80,7 +80,8 @@ class Codes():
             'code': data['code'],
             'tests': data['test'],
             'idExercise': data['id'],
-            'problem': data['problem']
+            'problem': data['problem'],
+            'language': data['language']
         }
         if codesDB.insert_one(codeData):
             print("Success")
@@ -90,4 +91,5 @@ class Codes():
     def get_codes(self, index):
 
         codes = list(codesDB.find({'_userId': session['user']['_id'], 'idExercise': str(index-1)}))
+        print(codes)
         return codes

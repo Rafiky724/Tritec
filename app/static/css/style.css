@@ -66,8 +66,8 @@ nav ul li a {
 }
 
 .excercises-color2 {
-  background-color: #0BAD6F;
-  /*background-color: #0BAD6F;*/
+  background: rgb(4,22,38);
+  background: linear-gradient(90deg, rgba(4,22,38,1) 0%, rgba(5,43,48,1) 42%, rgba(6,72,62,1) 67%, rgba(11,173,111,1) 100%);
   border-radius: 15px;
   gap: 20px;
 }
